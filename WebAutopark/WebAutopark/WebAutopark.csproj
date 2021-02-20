@@ -10,4 +10,15 @@
       <Folder Include="wwwroot\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\WebAutopark.BusinessLogic\WebAutopark.BusinessLogic.csproj" />
+      <ProjectReference Include="..\WebAutopark.DataAccess\WebAutopark.DataAccess.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="SqlScripts\DbCreationScript.sql">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>
