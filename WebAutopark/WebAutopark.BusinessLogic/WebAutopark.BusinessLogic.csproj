@@ -5,11 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Services\" />
+    <ProjectReference Include="..\WebAutopark.DataAccess\WebAutopark.DataAccess.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\WebAutopark.DataAccess\WebAutopark.DataAccess.csproj" />
+    <Folder Include="Services\" />
   </ItemGroup>
 
 </Project>
