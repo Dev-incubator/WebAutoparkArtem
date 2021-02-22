@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace WebAutopark.DataAccess.Entities.Base
 {
-    public interface IEntity
+    public abstract class Entity
     {
-        int Id { get; set; }
+        public int Id { get; set; }
     }
 }

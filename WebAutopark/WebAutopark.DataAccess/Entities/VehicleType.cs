@@ -7,11 +7,9 @@ using WebAutopark.DataAccess.Entities.Base;
 
 namespace WebAutopark.BusinessLogic.Models
 {
-    public class OrderDetail : IEntity
+    public class VehicleType : Entity
     {
-        public int Id { get; set; }
-        public int OrderId { get; set; }
-        public int DetailId { get; set; }
-        public int DetailAmount { get; set; }
+        public string TypeName { get; set; }
+        public double TaxCoeff { get; set; }
     }
 }

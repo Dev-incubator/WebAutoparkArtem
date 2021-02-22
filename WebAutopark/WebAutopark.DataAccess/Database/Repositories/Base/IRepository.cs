@@ -7,7 +7,7 @@ using WebAutopark.DataAccess.Entities.Base;
 
 namespace WebAutopark.DataAccess.Database.Repositories.Base
 {
-    interface IRepository<T> where T : IEntity
+    interface IRepository<T> where T : Entity
     {
         Task<IReadOnlyCollection<T>> GetAllAsync(); 
         Task<T> CreateAsync(T entity);

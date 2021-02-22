@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using WebAutopark.DataAccess.Entities.Base;
 
-namespace WebAutopark.BusinessLogic.Models
+
+namespace WebAutopark.DataAccess.Models
 {
-    public class Vehicle : IEntity
+    public class Vehicle : Entity
     {
-        public int Id { get; set; }
         public int VehicleTypeId { get; set; }
         public string ModelName { get; set; }
         public string RegistrationNumber { get; set; }

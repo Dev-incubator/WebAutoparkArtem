@@ -9,22 +9,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using WebAutopark.Data.Extensions.IApplicationBuilderExtension;
 using WebAutopark.DataAccess.Database.Creator;
 
 namespace WebAutopark
 {
     public class Startup
     {
-
-        private static void SetUpLocale()
-        {
-            var customCulture = new CultureInfo("en-US");
-            customCulture.NumberFormat.NumberDecimalSeparator = ".";
-
-            CultureInfo.DefaultThreadCurrentCulture = customCulture;
-            CultureInfo.DefaultThreadCurrentUICulture = customCulture;
-        }
-
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -43,7 +34,7 @@ namespace WebAutopark
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseRequestLocalization();
-            SetUpLocale();
+            app.UseCulture();
 
             if (env.IsDevelopment())
             {
@@ -53,12 +44,10 @@ namespace WebAutopark
             app.UseStaticFiles();
             app.UseRouting();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-            });
+            app.UseEndpoints(endpoints => 
+                endpoints.MapDefaultControllerRoute()
+            );
+
         }
     }
 }

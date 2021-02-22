@@ -5,11 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using WebAutopark.DataAccess.Entities.Base;
 
-namespace WebAutopark.BusinessLogic.Models
+namespace WebAutopark.DataAccess.Models
 {
-    public class Order : IEntity
+    public class Order : Entity
     {
-        public int Id { get; set; }
         public int VehicleId { get; set; }
         public string Description { get; set; }
     }
