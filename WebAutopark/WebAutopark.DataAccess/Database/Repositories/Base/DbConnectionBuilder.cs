@@ -10,11 +10,14 @@ namespace WebAutopark.DataAccess.Database.Repositories.Base
 {
     public class DbConnectionBuilder : IDbConnectionBuilder
     {
+
         private readonly string _connectionString;
+
         public DbConnectionBuilder(string connectionString)
         {
             _connectionString = connectionString;
         }
+
         public DbConnection GetConnection()
         {
             return new SqlConnection(_connectionString);

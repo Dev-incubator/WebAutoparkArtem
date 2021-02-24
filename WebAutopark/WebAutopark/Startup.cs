@@ -9,8 +9,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using WebAutopark.BusinessLogic.Extensions.DI;
 using WebAutopark.Data.Extensions.IApplicationBuilderExtension;
 using WebAutopark.DataAccess.Database.Creator;
+using WebAutopark.DataAccess.Extensions.DI;
 
 namespace WebAutopark
 {
@@ -27,7 +29,8 @@ namespace WebAutopark
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
             var creationScriptPath = Configuration["SqlScriptPath"];
             DbCreator.EnsureCreated(connectionString, creationScriptPath);
-
+            services.AddDataAccess(connectionString);
+            services.AddBusinessServices();
             services.AddMvc();
         }
 

@@ -9,13 +9,13 @@ namespace WebAutopark.Controllers
 {
     public class VehicleController : Controller
     {
-        public IActionResult ViewVehicles()
+        public IActionResult ViewList()
         {
             return View(new List<VehicleViewModel> 
             {
                 new VehicleViewModel
                 {
-                    Id = 1,
+                    VehicleId = 1,
                     VehicleTypeId = 2,
                     FuelTankAmount = 50,
                     ManufactureYear = 2020,
@@ -28,7 +28,7 @@ namespace WebAutopark.Controllers
                 },
                 new VehicleViewModel
                 {
-                    Id = 2,
+                    VehicleId = 2,
                     VehicleTypeId = 1,
                     FuelTankAmount = 50,
                     ManufactureYear = 2020,
@@ -41,7 +41,7 @@ namespace WebAutopark.Controllers
                 },
                 new VehicleViewModel
                 {
-                    Id = 2,
+                    VehicleId = 2,
                     VehicleTypeId = 1,
                     FuelTankAmount = 50,
                     ManufactureYear = 2020,

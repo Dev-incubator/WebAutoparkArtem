@@ -5,6 +5,8 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <Folder Include="Views\OrderDetail\" />
+      <Folder Include="Views\Order\" />
       <Folder Include="wwwroot\html\" />
       <Folder Include="wwwroot\img\favicons\" />
       <Folder Include="wwwroot\js\modules\" />

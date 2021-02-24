@@ -10,7 +10,8 @@ namespace WebAutopark.DataAccess.Database.Repositories.Base
 {
     public abstract class RepositoryConnection : IDisposable, IAsyncDisposable
     {
-        private readonly DbConnection _connection;
+        protected readonly DbConnection _connection;
+
         protected RepositoryConnection(IDbConnectionBuilder connectionBuilder)
         {
             _connection = connectionBuilder.GetConnection();

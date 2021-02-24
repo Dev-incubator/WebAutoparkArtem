@@ -10,23 +10,8 @@ namespace WebAutopark.BusinessLogic.ViewModels
 {
     public class VehicleViewModel
     {
-        public VehicleViewModel()
-        {
-
-        }
-        public VehicleViewModel(Vehicle vehicle)
-        {
-            Id = vehicle.Id;
-            VehicleTypeId = vehicle.VehicleTypeId;
-            ModelName = vehicle.ModelName;
-            RegistrationNumber = vehicle.RegistrationNumber;
-            Weight = vehicle.Weight;
-            ManufactureYear = vehicle.ManufactureYear;
-            Mileage = vehicle.Mileage;
-            FuelTankAmount = vehicle.FuelTankAmount;
-            CarColor = vehicle.CarColor;
-        }
-        public int Id { get; set; }
+        public int VehicleId { get; set; }
+        public VehicleTypeViewModel VehicleType { get; set; }
         public int VehicleTypeId { get; set; }
         [Required]
         public string ModelName { get; set; }

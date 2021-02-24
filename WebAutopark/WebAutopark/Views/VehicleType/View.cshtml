@@ -1,0 +1,36 @@
+﻿@model WebAutopark.BusinessLogic.ViewModels.VehicleTypeViewModel
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h2>View</h2>
+
+<div>
+    <h4>VehicleTypeViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.VehicleTypeId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.VehicleTypeId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TypeName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TypeName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TaxCoeff)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TaxCoeff)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -9,10 +9,10 @@ namespace WebAutopark.DataAccess.Database.Repositories.Base
 {
     public interface IRepository<T> where T : Entity
     {
-        Task<IReadOnlyCollection<T>> GetAllAsync(); 
-        Task<T> CreateAsync(T entity);
+        Task<IEnumerable<T>> GetAllAsync(); 
+        Task CreateAsync(T entity);
         Task UpdateAsync(T entity);
-        Task DeleteAsync(T entity);
+        Task DeleteAsync(int id);
         Task<T> GetByIdAsync(int id);
     }
 }
