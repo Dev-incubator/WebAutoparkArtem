@@ -14,10 +14,10 @@ namespace WebAutopark.BusinessLogic.Services
 {
     public class VehicleTypeService : IVehicleTypeService
     {
-        private readonly IVehicleTypeRepository _vehicleTypeRepository;
+        private readonly IRepository<VehicleType> _vehicleTypeRepository;
         private readonly IMapper _mapper;
 
-        public VehicleTypeService(IVehicleTypeRepository vehicleTypeRepository, IMapper mapper)
+        public VehicleTypeService(IRepository<VehicleType> vehicleTypeRepository, IMapper mapper)
         {
             _vehicleTypeRepository = vehicleTypeRepository;
             _mapper = mapper;

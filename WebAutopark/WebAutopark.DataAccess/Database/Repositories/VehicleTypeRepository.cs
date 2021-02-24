@@ -9,7 +9,7 @@ using WebAutopark.DataAccess.Database.Repositories.Base;
 
 namespace WebAutopark.DataAccess.Database.Repositories
 {
-    public class VehicleTypeRepository : RepositoryConnection, IVehicleTypeRepository
+    public class VehicleTypeRepository : RepositoryConnection, IRepository<VehicleType>
     {
         public VehicleTypeRepository(IDbConnectionBuilder dbConnectionBuilder) : base(dbConnectionBuilder)
         {
