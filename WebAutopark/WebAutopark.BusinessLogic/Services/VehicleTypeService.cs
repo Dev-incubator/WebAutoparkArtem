@@ -16,14 +16,17 @@ namespace WebAutopark.BusinessLogic.Services
     {
         private readonly IVehicleTypeRepository _vehicleTypeRepository;
         private readonly IMapper _mapper;
+
         public VehicleTypeService(IVehicleTypeRepository vehicleTypeRepository, IMapper mapper)
         {
             _vehicleTypeRepository = vehicleTypeRepository;
             _mapper = mapper;
         }
+
         public async Task CreateVehicleType(VehicleTypeViewModel viewModel)
         {
             var mappedEntity = _mapper.Map<VehicleType>(viewModel);
+
             await _vehicleTypeRepository.CreateAsync(mappedEntity);
         }
 
@@ -34,17 +37,23 @@ namespace WebAutopark.BusinessLogic.Services
 
         public async Task<VehicleTypeViewModel> GetVehicleTypeById(int id)
         {
-             return _mapper.Map<VehicleTypeViewModel>(await _vehicleTypeRepository.GetByIdAsync(id));
+            var mappedEntity = await _vehicleTypeRepository.GetByIdAsync(id);
+
+            return _mapper.Map<VehicleTypeViewModel>(mappedEntity);
         }
 
         public async Task<IEnumerable<VehicleTypeViewModel>> GetVehicleTypes()
         {
-            return _mapper.Map<IEnumerable<VehicleTypeViewModel>>(await _vehicleTypeRepository.GetAllAsync());
+            var vehicleTypeEntities = await _vehicleTypeRepository.GetAllAsync();
+
+            return _mapper.Map<IEnumerable<VehicleTypeViewModel>>(vehicleTypeEntities);
         }
 
         public Task UpdateVehicleType(VehicleTypeViewModel viewModel)
         {
-            return _vehicleTypeRepository.UpdateAsync(_mapper.Map<VehicleType>(viewModel));
+            var mappedEntity = _mapper.Map<VehicleType>(viewModel);
+
+            return _vehicleTypeRepository.UpdateAsync(mappedEntity);
         }
     }
 }

@@ -19,12 +19,16 @@ namespace WebAutopark.Controllers
 
         public async Task<IActionResult> ViewList()
         {
-            return View(await _vehicleTypeService.GetVehicleTypes());
+            var vehicleTypesList = await _vehicleTypeService.GetVehicleTypes();
+
+            return View(vehicleTypesList);
         }
         // GET: VehicleTypeController/Details/5
         public async Task<IActionResult> View(int id)
         {
-            return View(await _vehicleTypeService.GetVehicleTypeById(id));
+            var vehicleType = await _vehicleTypeService.GetVehicleTypeById(id);
+
+            return View(vehicleType);
         }
 
         // GET: VehicleTypeController/Create
@@ -47,7 +51,9 @@ namespace WebAutopark.Controllers
         // GET: VehicleTypeController/Edit/5
         public async Task<IActionResult> Update(int id)
         {
-            return View(await _vehicleTypeService.GetVehicleTypeById(id));
+            var vehicleTypes = await _vehicleTypeService.GetVehicleTypeById(id);
+
+            return View(vehicleTypes);
         }
 
         // POST: VehicleTypeController/Edit/5

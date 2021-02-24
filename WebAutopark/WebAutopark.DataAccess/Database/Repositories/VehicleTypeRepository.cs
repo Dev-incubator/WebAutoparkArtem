@@ -22,24 +22,28 @@ namespace WebAutopark.DataAccess.Database.Repositories
                 "INSERT INTO VehicleTypes " +
                 "(TypeName, TaxCoeff) VALUES " +
                 "(@TypeName, @TaxCoeff)";
+
             await _connection.ExecuteAsync(sqlQuery, entity);
         }
 
         public Task DeleteAsync(int id)
         {
             var sqlQuery = "DELETE FROM VehicleTypes WHERE Id = @id";
+
             return _connection.ExecuteAsync(sqlQuery, new { id });
         }
 
         public Task<IEnumerable<VehicleType>> GetAllAsync()
         {
             const string sqlQuery = "SELECT * FROM VehicleTypes";
+
             return _connection.QueryAsync<VehicleType>(sqlQuery);
         }
 
         public Task<VehicleType> GetByIdAsync(int id)
         {
             const string sqlQuery = "SELECT * FROM VehicleTypes WHERE Id=@id";
+
             return _connection.QueryFirstAsync<VehicleType>(sqlQuery, new { id });
         }
 
@@ -49,6 +53,7 @@ namespace WebAutopark.DataAccess.Database.Repositories
                 "UPDATE VehicleTypes " +
                 "SET TypeName = @TypeName, TaxCoeff = @TaxCoeff " +
                 "WHERE Id = @Id";
+
             return _connection.ExecuteAsync(sqlQuery, entity);
         }
     }
