@@ -13,6 +13,6 @@ namespace WebAutopark.BusinessLogic.Services.Base
         Task UpdateVehicleType(VehicleTypeViewModel viewModel);
         Task DeleteVehicleType(int id);
         Task<VehicleTypeViewModel> GetVehicleTypeById(int id);
-        Task<IReadOnlyCollection<VehicleTypeViewModel>> GetVehicleTypes();
+        Task<IEnumerable<VehicleTypeViewModel>> GetVehicleTypes();
     }
 }

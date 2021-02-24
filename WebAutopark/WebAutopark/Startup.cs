@@ -31,6 +31,7 @@ namespace WebAutopark
             DbCreator.EnsureCreated(connectionString, creationScriptPath);
             services.AddDataAccess(connectionString);
             services.AddBusinessServices();
+            services.AddAutomapper();
             services.AddMvc();
         }
 

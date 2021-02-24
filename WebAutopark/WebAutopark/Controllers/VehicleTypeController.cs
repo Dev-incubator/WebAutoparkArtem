@@ -4,25 +4,32 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebAutopark.BusinessLogic.Services.Base;
+using WebAutopark.BusinessLogic.ViewModels;
 
 namespace WebAutopark.Controllers
 {
     public class VehicleTypeController : Controller
     {
-        // GET: VehicleTypeController
-        public ActionResult Index()
+        private readonly IVehicleTypeService _vehicleTypeService;
+        public VehicleTypeController(IVehicleTypeService vehicleTypeService)
         {
-            return View();
+            _vehicleTypeService = vehicleTypeService;
         }
 
-        // GET: VehicleTypeController/Details/5
-        public ActionResult Details(int id)
+        public async Task<IActionResult> ViewList()
         {
-            return View();
+            return View(await _vehicleTypeService.GetVehicleTypes());
+        }
+        // GET: VehicleTypeController/Details/5
+        public async Task<IActionResult> View(int id)
+        {
+            return View(await _vehicleTypeService.GetVehicleTypeById(id));
         }
 
         // GET: VehicleTypeController/Create
-        public ActionResult Create()
+        [HttpGet]
+        public IActionResult Create()
         {
             return View();
         }
@@ -30,58 +37,28 @@ namespace WebAutopark.Controllers
         // POST: VehicleTypeController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<IActionResult> Create(VehicleTypeViewModel viewModel)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            await _vehicleTypeService.CreateVehicleType(viewModel);
+
+            return RedirectToAction("ViewList");
         }
 
         // GET: VehicleTypeController/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<IActionResult> Update(int id)
         {
-            return View();
+            return View(await _vehicleTypeService.GetVehicleTypeById(id));
         }
 
         // POST: VehicleTypeController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<IActionResult> Update(VehicleTypeViewModel viewModel)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            await _vehicleTypeService.UpdateVehicleType(viewModel);
+
+            return RedirectToAction("ViewList");
         }
 
-        // GET: VehicleTypeController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: VehicleTypeController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }
