@@ -13,6 +13,7 @@ namespace WebAutopark.Controllers
     {
         private readonly IBusinessService<VehicleViewModel> _vehicleService;
         private readonly IBusinessService<VehicleTypeViewModel> _vehicleTypeService;
+
         public VehicleController(
             IBusinessService<VehicleViewModel> vehicleService, 
             IBusinessService<VehicleTypeViewModel> vehicleTypeService)
@@ -50,6 +51,7 @@ namespace WebAutopark.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Update(VehicleViewModel viewModel)
         {
             await _vehicleService.Update(viewModel);

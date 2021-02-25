@@ -222,7 +222,7 @@ REFERENCES [dbo].[Orders] ([Id]) ON DELETE CASCADE
 GO
 
 ALTER TABLE [dbo].[OrderDetails]  WITH CHECK ADD FOREIGN KEY([DetailId])
-REFERENCES [dbo].[VehicleParts] ([Id])
+REFERENCES [dbo].[VehicleParts] ([Id]) 
 GO
 
 ALTER TABLE [dbo].[Orders]  WITH CHECK ADD FOREIGN KEY([VehicleId])
@@ -230,7 +230,7 @@ REFERENCES [dbo].[Vehicles] ([Id])
 GO
 
 ALTER TABLE [dbo].[Vehicles]  WITH CHECK ADD FOREIGN KEY([VehicleTypeId])
-REFERENCES [dbo].[VehicleTypes] ([Id])
+REFERENCES [dbo].[VehicleTypes] ([Id]) ON DELETE SET DEFAULT
 GO
 
 USE [master]
