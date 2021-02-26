@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WebAutopark.BusinessLogic.Models;
 using WebAutopark.BusinessLogic.ViewModels;
-using WebAutopark.DataAccess.Models;
 
 namespace WebAutopark.BusinessLogic.Extensions.DI
 {
@@ -21,12 +21,6 @@ namespace WebAutopark.BusinessLogic.Extensions.DI
 
                     cfg.CreateMap<VehicleTypeViewModel, VehicleType>()
                     .ForMember(dest => dest.Id, act => act.MapFrom(src => src.VehicleTypeId));
-
-                    cfg.CreateMap<Vehicle, VehicleViewModel>()
-                    .ForMember(dest => dest.VehicleId, act => act.MapFrom(src => src.Id));
-
-                    cfg.CreateMap<VehicleViewModel, Vehicle>()
-                    .ForMember(dest => dest.Id, act => act.MapFrom(src => src.VehicleId));
                 }
             );
         }

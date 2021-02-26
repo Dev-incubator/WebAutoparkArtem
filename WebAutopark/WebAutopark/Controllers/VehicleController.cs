@@ -1,89 +1,58 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WebAutopark.BusinessLogic.Services.Base;
 using WebAutopark.BusinessLogic.ViewModels;
 
 namespace WebAutopark.Controllers
 {
     public class VehicleController : Controller
     {
-        private readonly IBusinessService<VehicleViewModel> _vehicleService;
-        private readonly IBusinessService<VehicleTypeViewModel> _vehicleTypeService;
-
-        public VehicleController(
-            IBusinessService<VehicleViewModel> vehicleService, 
-            IBusinessService<VehicleTypeViewModel> vehicleTypeService)
+        public IActionResult ViewList()
         {
-            _vehicleService = vehicleService;
-            _vehicleTypeService = vehicleTypeService;
-        }
-
-        public async Task<IActionResult> View(int id)
-        {
-            var vehicle = await _vehicleService.GetById(id);
-
-            if (vehicle is null)
+            return View(new List<VehicleViewModel> 
             {
-                return NoContent();
-            }
+                new VehicleViewModel
+                {
+                    VehicleId = 1,
+                    VehicleTypeId = 2,
+                    FuelTankAmount = 50,
+                    ManufactureYear = 2020,
+                    Mileage = 350000,
+                    ModelName = "Volkswagen",
+                    RegistrationNumber = "AX5555",
+                    CarColor = "Red",
+                    Weight = 1500
 
-            return View(vehicle);
-        }
+                },
+                new VehicleViewModel
+                {
+                    VehicleId = 2,
+                    VehicleTypeId = 1,
+                    FuelTankAmount = 50,
+                    ManufactureYear = 2020,
+                    Mileage = 350000,
+                    ModelName = "Test2",
+                    RegistrationNumber = "AX5555",
+                    CarColor = "Blue",
+                    Weight = 1500
 
-        [HttpGet]
-        public async Task<IActionResult> Update(int id)
-        {
-            var vehicle = await _vehicleService.GetById(id);
+                },
+                new VehicleViewModel
+                {
+                    VehicleId = 2,
+                    VehicleTypeId = 1,
+                    FuelTankAmount = 50,
+                    ManufactureYear = 2020,
+                    Mileage = 350000,
+                    ModelName = "Test2",
+                    RegistrationNumber = "AX5555",
+                    CarColor = "Blue",
+                    Weight = 1500
 
-            if (vehicle is null)
-            {
-                return NoContent();
-            }
-
-            var vehicleTypes = await _vehicleTypeService.GetAll();
-            ViewBag.Types = new SelectList(vehicleTypes, "VehicleTypeId", "TypeName", vehicle.VehicleType);
-
-            return View(vehicle);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Update(VehicleViewModel viewModel)
-        {
-            await _vehicleService.Update(viewModel);
-
-            return RedirectToAction("ViewList");
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> Create()
-        {
-            var vehicleTypes = await _vehicleTypeService.GetAll();
-            ViewBag.Types = new SelectList(vehicleTypes, "VehicleTypeId", "TypeName");
-
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(VehicleViewModel viewModel)
-        {
-
-            await _vehicleService.Create(viewModel);
-
-            return RedirectToAction("ViewList");
-        }
-
-        public async Task<IActionResult> ViewList()
-        {
-            var vehicleList = await _vehicleService.GetAll();
-
-            return View(vehicleList);
-
+                }
+            });
         }
     }
 }
