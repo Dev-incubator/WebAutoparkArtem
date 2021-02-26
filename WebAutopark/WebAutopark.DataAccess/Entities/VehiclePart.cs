@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WebAutopark.DataAccess.Entities.Base;
 
-namespace WebAutopark.BusinessLogic.Models
+namespace WebAutopark.DataAccess.Models
 {
     public class VehiclePart : Entity
     {
