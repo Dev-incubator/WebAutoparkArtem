@@ -114,7 +114,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE [dbo].[Vehicles](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Id] [int] NOT NULL,
 	[VehicleTypeId] [int] NOT NULL,
 	[ModelName] [nvarchar](50) NOT NULL,
 	[RegistrationNumber] [nvarchar](20) NOT NULL,
@@ -217,25 +217,5 @@ CREATE TABLE [dbo].[OrderDetails](
 ) ON [PRIMARY]
 GO
 
-ALTER TABLE [dbo].OrderDetails  WITH CHECK ADD FOREIGN KEY([OrderId])
-REFERENCES [dbo].[Orders] ([Id]) ON DELETE CASCADE
-GO
 
-ALTER TABLE [dbo].[OrderDetails]  WITH CHECK ADD FOREIGN KEY([DetailId])
-REFERENCES [dbo].[VehicleParts] ([Id]) 
-GO
-
-ALTER TABLE [dbo].[Orders]  WITH CHECK ADD FOREIGN KEY([VehicleId])
-REFERENCES [dbo].[Vehicles] ([Id])
-GO
-
-ALTER TABLE [dbo].[Vehicles]  WITH CHECK ADD FOREIGN KEY([VehicleTypeId])
-REFERENCES [dbo].[VehicleTypes] ([Id]) ON DELETE SET DEFAULT
-GO
-
-USE [master]
-GO
-
-ALTER DATABASE [WebAutopark] SET READ_WRITE 
-GO
 

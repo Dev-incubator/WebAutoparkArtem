@@ -11,28 +11,22 @@ namespace WebAutopark.Controllers
 {
     public class VehicleTypeController : Controller
     {
-        private readonly IBusinessService<VehicleTypeViewModel> _vehicleTypeService;
-
-        public VehicleTypeController(IBusinessService<VehicleTypeViewModel> vehicleTypeService)
+        private readonly IVehicleTypeService _vehicleTypeService;
+        public VehicleTypeController(IVehicleTypeService vehicleTypeService)
         {
             _vehicleTypeService = vehicleTypeService;
         }
 
         public async Task<IActionResult> ViewList()
         {
-            var vehicleTypesList = await _vehicleTypeService.GetAll();
+            var vehicleTypesList = await _vehicleTypeService.GetVehicleTypes();
 
             return View(vehicleTypesList);
         }
-        // GET: VehicleTypeController/View/5
+        // GET: VehicleTypeController/Details/5
         public async Task<IActionResult> View(int id)
         {
-            var vehicleType = await _vehicleTypeService.GetById(id);
-
-            if (vehicleType is null)
-            {
-                return NoContent();
-            }
+            var vehicleType = await _vehicleTypeService.GetVehicleTypeById(id);
 
             return View(vehicleType);
         }
@@ -49,53 +43,25 @@ namespace WebAutopark.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(VehicleTypeViewModel viewModel)
         {
-            await _vehicleTypeService.Create(viewModel);
+            await _vehicleTypeService.CreateVehicleType(viewModel);
 
             return RedirectToAction("ViewList");
         }
 
-        // GET: VehicleTypeController/Update/5
-        [HttpGet]
+        // GET: VehicleTypeController/Edit/5
         public async Task<IActionResult> Update(int id)
         {
-            var vehicleType = await _vehicleTypeService.GetById(id);
+            var vehicleTypes = await _vehicleTypeService.GetVehicleTypeById(id);
 
-            if (vehicleType is null)
-            {
-                return NoContent();
-            }
-
-            return View(vehicleType);
+            return View(vehicleTypes);
         }
 
-        // POST: VehicleTypeController/Update/5
+        // POST: VehicleTypeController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Update(VehicleTypeViewModel viewModel)
         {
-            await _vehicleTypeService.Update(viewModel);
-
-            return RedirectToAction("ViewList");
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> DeleteConfirmation(int id)
-        {
-            var vehicleType = await _vehicleTypeService.GetById(id);
-
-            if (vehicleType is null)
-            {
-                return NoContent();
-            }
-
-            return View(vehicleType);
-        }
-
-        // POST: VehicleTypeController/Delete/5
-        [HttpPost]
-        public async Task<IActionResult> Delete(int id)
-        {
-            await _vehicleTypeService.Delete(id);
+            await _vehicleTypeService.UpdateVehicleType(viewModel);
 
             return RedirectToAction("ViewList");
         }

@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WebAutopark.BusinessLogic.Models;
 using WebAutopark.DataAccess.Database.Repositories.Base;
-using WebAutopark.DataAccess.Models;
 
 namespace WebAutopark.DataAccess.Database.Repositories
 {
