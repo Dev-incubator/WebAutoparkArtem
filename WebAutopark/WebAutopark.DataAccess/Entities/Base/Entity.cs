@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WebAutopark.DataAccess.Database.Context
+namespace WebAutopark.DataAccess.Entities.Base
 {
-    public class DbContext
+    public abstract class Entity
     {
+        public int Id { get; set; }
     }
 }

@@ -5,10 +5,17 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Controllers\" />
-      <Folder Include="Views\ViewModels\" />
-      <Folder Include="Views\" />
-      <Folder Include="wwwroot\" />
+      <Folder Include="Views\OrderDetail\" />
+      <Folder Include="Views\Order\" />
+      <Folder Include="wwwroot\html\" />
+      <Folder Include="wwwroot\img\favicons\" />
+      <Folder Include="wwwroot\js\modules\" />
+      <Folder Include="wwwroot\js\libraries\" />
+      <Folder Include="wwwroot\js\validation\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
     </ItemGroup>
 
     <ItemGroup>

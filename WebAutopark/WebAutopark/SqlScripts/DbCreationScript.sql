@@ -140,10 +140,10 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [dbo].[VehicleTypes](
-	[Id] [int] NOT NULL,
-	[TypeName] [nvarchar](50) NOT NULL,
-	[TaxCoeff] [real] NOT NULL,
+CREATE TABLE [dbo].[VehicleTypes] (
+    [Id]       INT   IDENTITY(1,1) NOT NULL,
+    [TypeName] NVARCHAR (50) NOT NULL,
+    [TaxCoeff] FLOAT          NOT NULL,
  CONSTRAINT [PK_VehicleType] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
@@ -162,7 +162,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE [dbo].[VehicleParts](
-	[Id] [int] NOT NULL,
+	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Name] [nvarchar](50) NOT NULL,
 	[Amount] [int] NOT NULL,
 	[Price] [int] NOT NULL,
@@ -185,7 +185,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE [dbo].[Orders](
-	[Id] [int] NOT NULL,
+	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[VehicleId] [int] NOT NULL,
 	[Description] [nvarchar](150) NULL,
  CONSTRAINT [PK_Order] PRIMARY KEY CLUSTERED 
@@ -206,7 +206,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE [dbo].[OrderDetails](
-	[Id] [int] NOT NULL,
+	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[OrderId] [int] NOT NULL,
 	[DetailId] [int] NOT NULL,
 	[DetailAmount] [int] NOT NULL,
