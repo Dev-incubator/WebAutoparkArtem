@@ -23,12 +23,12 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr href="#@item.VehicleId">
+        <tr href="@item.VehicleId">
             <td>
                 @Html.DisplayFor(modelItem => item.VehicleId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.VehicleTypeId)
+                @Html.DisplayFor(modelItem => item.VehicleType.TypeName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ModelName)
@@ -53,10 +53,10 @@
             </td>
             <td class="text-center">
                 <form asp-action="Delete" method="post">
-                    <a class="btn btn-sm btn-warning">
+                    <a asp-action="Update" asp-route-id="@item.VehicleId" class="btn btn-sm btn-warning">
                         Edit
                     </a>
-                    <input type="hidden"/>
+                    <input type="hidden" value="@item.VehicleId"/>
                     <button type="submit" class="btn btn-danger btn-sm">
                         Delete
                     </button>
@@ -67,5 +67,5 @@
     </tbody>
 </table>
 <div class="text-center">
-    <a class="btn btn-primary">Add vehicle</a>
+    <a class="btn btn-primary" asp-action="Create">Add vehicle</a>
 </div>

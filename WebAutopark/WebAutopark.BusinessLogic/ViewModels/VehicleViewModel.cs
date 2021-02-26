@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-using WebAutopark.BusinessLogic.Models;
 using WebAutopark.DataAccess.Models;
 
 namespace WebAutopark.BusinessLogic.ViewModels
