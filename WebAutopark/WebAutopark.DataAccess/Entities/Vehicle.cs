@@ -10,6 +10,7 @@ namespace WebAutopark.DataAccess.Models
 {
     public class Vehicle : Entity
     {
+        public VehicleType VehicleType { get; set; }
         public int VehicleTypeId { get; set; }
         public string ModelName { get; set; }
         public string RegistrationNumber { get; set; }
