@@ -24,6 +24,7 @@ namespace WebAutopark.Controllers
 
             return View(vehicleTypesList);
         }
+
         // GET: VehicleTypeController/View/5
         public async Task<IActionResult> View(int id)
         {
@@ -58,14 +59,14 @@ namespace WebAutopark.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(int id)
         {
-            var vehicleType = await _vehicleTypeService.GetById(id);
+            var updateVehicleType = await _vehicleTypeService.GetById(id);
 
-            if (vehicleType is null)
+            if (updateVehicleType is null)
             {
                 return NoContent();
             }
 
-            return View(vehicleType);
+            return View(updateVehicleType);
         }
 
         // POST: VehicleTypeController/Update/5
@@ -81,14 +82,14 @@ namespace WebAutopark.Controllers
         [HttpGet]
         public async Task<IActionResult> DeleteConfirmation(int id)
         {
-            var vehicleType = await _vehicleTypeService.GetById(id);
+            var deleteVehicleType = await _vehicleTypeService.GetById(id);
 
-            if (vehicleType is null)
+            if (deleteVehicleType is null)
             {
                 return NoContent();
             }
 
-            return View(vehicleType);
+            return View(deleteVehicleType);
         }
 
         // POST: VehicleTypeController/Delete/5

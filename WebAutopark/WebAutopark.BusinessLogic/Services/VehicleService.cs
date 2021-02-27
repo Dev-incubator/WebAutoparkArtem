@@ -15,43 +15,44 @@ namespace WebAutopark.BusinessLogic.Services
     {
         private readonly IRepository<Vehicle> _vehicleRepository;
         private readonly IMapper _mapper;
+
         public VehicleService(IRepository<Vehicle> repository, IMapper mapper)
         {
             _vehicleRepository = repository;
             _mapper = mapper;
         }
 
-        public async Task Create(VehicleViewModel viewModel)
+        public Task Create(VehicleViewModel viewModel)
         {
-            var vehicle = _mapper.Map<VehicleViewModel, Vehicle>(viewModel);
+            var vehicle = _mapper.Map<Vehicle>(viewModel);
 
-            await _vehicleRepository.CreateAsync(vehicle);
+            return _vehicleRepository.CreateAsync(vehicle);
         }
 
         public Task Delete(int id)
         {
-            throw new NotImplementedException();
+            return _vehicleRepository.DeleteAsync(id);
         }
 
         public async Task<IEnumerable<VehicleViewModel>> GetAll()
         {
             var vehicleEntities = await _vehicleRepository.GetAllAsync();
 
-            return _mapper.Map<IEnumerable<Vehicle>, IEnumerable<VehicleViewModel>>(vehicleEntities);
+            return _mapper.Map<IEnumerable<VehicleViewModel>>(vehicleEntities);
         }
 
         public async Task<VehicleViewModel> GetById(int id)
         {
-            var findedVehicle = await _vehicleRepository.GetByIdAsync(id);
+            var foundedVehicle = await _vehicleRepository.GetByIdAsync(id);
 
-            return _mapper.Map<Vehicle, VehicleViewModel>(findedVehicle);
+            return _mapper.Map<VehicleViewModel>(foundedVehicle);
         }
 
-        public async Task Update(VehicleViewModel viewModel)
+        public Task Update(VehicleViewModel viewModel)
         {
-            var mappedEntity = _mapper.Map<VehicleViewModel, Vehicle>(viewModel);
+            var mappedEntity = _mapper.Map<Vehicle>(viewModel);
 
-            await _vehicleRepository.UpdateAsync(mappedEntity);
+            return _vehicleRepository.UpdateAsync(mappedEntity);
         }
     }
 }

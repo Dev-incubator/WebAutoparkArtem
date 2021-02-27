@@ -85,5 +85,27 @@ namespace WebAutopark.Controllers
             return View(vehicleList);
 
         }
+
+        [HttpGet]
+        public async Task<IActionResult> DeleteConfirmation(int id)
+        {
+            var deletedVehicle = await _vehicleService.GetById(id);
+
+            if (deletedVehicle is null)
+            {
+                return NoContent();
+            }
+
+            return View(deletedVehicle);
+        }
+
+        // POST: VehicleController/Delete/5
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _vehicleService.Delete(id);
+
+            return RedirectToAction("ViewList");
+        }
     }
 }

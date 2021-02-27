@@ -230,7 +230,7 @@ REFERENCES [dbo].[Vehicles] ([Id])
 GO
 
 ALTER TABLE [dbo].[Vehicles]  WITH CHECK ADD FOREIGN KEY([VehicleTypeId])
-REFERENCES [dbo].[VehicleTypes] ([Id]) ON DELETE SET DEFAULT
+REFERENCES [dbo].[VehicleTypes] ([Id]) ON DELETE CASCADE
 GO
 
 USE [master]
