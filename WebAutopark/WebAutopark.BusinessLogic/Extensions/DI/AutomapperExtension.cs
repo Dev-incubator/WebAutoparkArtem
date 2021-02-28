@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WebAutopark.BusinessLogic.ViewModels;
-using WebAutopark.DataAccess.Models;
+using WebAutopark.DataAccess.Entities;
 
 namespace WebAutopark.BusinessLogic.Extensions.DI
 {

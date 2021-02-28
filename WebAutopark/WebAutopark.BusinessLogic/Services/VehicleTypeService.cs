@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using WebAutopark.BusinessLogic.Services.Base;
 using WebAutopark.BusinessLogic.ViewModels;
 using WebAutopark.DataAccess.Database.Repositories.Base;
-using WebAutopark.DataAccess.Models;
+using WebAutopark.DataAccess.Entities;
 
 namespace WebAutopark.BusinessLogic.Services
 {

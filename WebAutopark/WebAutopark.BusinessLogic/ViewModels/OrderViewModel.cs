@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WebAutopark.DataAccess.Models;
+using WebAutopark.DataAccess.Entities;
 
 namespace WebAutopark.BusinessLogic.ViewModels
 {

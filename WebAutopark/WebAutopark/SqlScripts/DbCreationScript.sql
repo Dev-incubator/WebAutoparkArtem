@@ -141,9 +141,9 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE [dbo].[VehicleTypes] (
-    [Id]       INT   IDENTITY(1,1) NOT NULL,
-    [TypeName] NVARCHAR (50) NOT NULL,
-    [TaxCoeff] FLOAT          NOT NULL,
+	[Id]       [int]   IDENTITY(1,1) NOT NULL,
+	[TypeName] [nvarchar](50) NOT NULL,
+	[TaxCoeff] [float]          NOT NULL,
  CONSTRAINT [PK_VehicleType] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
