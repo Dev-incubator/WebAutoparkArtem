@@ -86,6 +86,7 @@ namespace WebAutopark.Controllers
             return View(vehicleList);
 
         }
+
         [HttpGet("{orderBy}")]
         public async Task<IActionResult> ViewList(string orderBy)
         {
@@ -121,8 +122,8 @@ namespace WebAutopark.Controllers
             return View(deletedVehicle);
         }
 
-        // POST: VehicleController/Delete/5
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int id)
         {
             await _vehicleService.Delete(id);

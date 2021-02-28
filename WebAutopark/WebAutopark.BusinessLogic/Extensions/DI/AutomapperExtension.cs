@@ -27,6 +27,12 @@ namespace WebAutopark.BusinessLogic.Extensions.DI
 
                     cfg.CreateMap<VehicleViewModel, Vehicle>()
                     .ForMember(dest => dest.Id, act => act.MapFrom(src => src.VehicleId));
+
+                    cfg.CreateMap<VehiclePart, VehiclePartViewModel>()
+                    .ForMember(dest => dest.VehiclePartId, act => act.MapFrom(src => src.Id));
+
+                    cfg.CreateMap<VehiclePartViewModel, VehiclePart>()
+                    .ForMember(dest => dest.Id, act => act.MapFrom(src => src.VehiclePartId));
                 }
             );
         }
