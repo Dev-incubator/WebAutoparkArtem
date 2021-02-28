@@ -35,7 +35,7 @@
     <tbody>
         @foreach (var item in Model)
         {
-<tr href="@item.VehicleId">
+<tr>
     <td>
         @Html.DisplayFor(modelItem => item.VehicleId)
     </td>
@@ -68,6 +68,9 @@
     </td>
     <td class="text-center">
         <form asp-action="DeleteConfirmation" asp-route-id="@item.VehicleId" method="get">
+            <a asp-action="View" asp-route-id="@item.VehicleId" class="btn btn-sm btn-success">
+                View
+            </a>
             <a asp-action="Update" asp-route-id="@item.VehicleId" class="btn btn-sm btn-warning">
                 Edit
             </a>
@@ -76,8 +79,7 @@
             </button>
         </form>
     </td>
-</tr>
-}
+</tr>}
     </tbody>
 </table>
 <div class="text-center">

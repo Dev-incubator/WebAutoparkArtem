@@ -30,7 +30,7 @@
         </dd>
     </dl>
 </div>
-<div>
-    @Html.ActionLink("Update", "Update", new { id = Model.VehicleTypeId  }) |
-    <a asp-action="ViewList">Back to List</a>
+<div class="text-center">
+    <a asp-action="Update" asp-route-id="@Model.VehicleTypeId" class="btn btn-warning">Edit</a> |
+    <a asp-action="ViewList" class="btn btn-primary">Back to List</a>
 </div>

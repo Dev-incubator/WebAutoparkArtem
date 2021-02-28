@@ -16,23 +16,23 @@ namespace WebAutopark.DataAccess.Database.Repositories
 
         }
 
-        public async Task CreateAsync(Vehicle entity)
+        public Task CreateAsync(Vehicle entity)
         {
             const string sqlQuery =
                 "INSERT INTO Vehicles" +
                 "(VehicleTypeId, ModelName, RegistrationNumber, Weight, ManufactureYear, Mileage, CarColor, FuelTankAmount, Consumption) VALUES " +
                 "(@VehicleTypeId, @ModelName, @RegistrationNumber, @Weight, @ManufactureYear, @Mileage, @CarColor, @FuelTankAmount, @Consumption)";
 
-            await _connection.ExecuteAsync(sqlQuery, entity);
+            return _connection.ExecuteAsync(sqlQuery, entity);
         }
 
-        public async Task DeleteAsync(int id)
+        public Task DeleteAsync(int id)
         {
             const string sqlQuery =
                 "DELETE FROM Vehicles " +
                 "WHERE Id = @id";
 
-            await _connection.ExecuteAsync(sqlQuery, new { id });
+            return _connection.ExecuteAsync(sqlQuery, new { id });
         }
 
         public Task<IEnumerable<Vehicle>> GetAllAsync()
@@ -69,7 +69,7 @@ namespace WebAutopark.DataAccess.Database.Repositories
            return queryResult.SingleOrDefault();
         }
 
-        public async Task UpdateAsync(Vehicle entity)
+        public Task UpdateAsync(Vehicle entity)
         {
             const string sqlQuery =
                    "UPDATE Vehicles " +
@@ -80,11 +80,11 @@ namespace WebAutopark.DataAccess.Database.Repositories
                    "ManufactureYear = @ManufactureYear, " +
                    "Mileage = @Mileage, " +
                    "CarColor = @CarColor, " +
-                   "FuelTankAmount = @FuelTankAmount " +
+                   "FuelTankAmount = @FuelTankAmount, " +
                    "Consumption = @Consumption " +
                    "WHERE Id = @Id";
 
-            await _connection.ExecuteAsync(sqlQuery, entity);
+            return _connection.ExecuteAsync(sqlQuery, entity);
 
         }
     }
