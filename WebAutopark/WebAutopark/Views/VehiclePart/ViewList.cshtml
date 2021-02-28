@@ -6,26 +6,23 @@
 
 <h2>ViewList</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
+<table class="table table-striped table-borderless table-sm">
+    <thead class="thead-light">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.VehiclePartId)
+                Id
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                Name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Amount)
+                Amount
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Price)
+                Price
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Description)
+                Description
             </th>
             <th></th>
         </tr>
@@ -44,17 +41,28 @@
                     @Html.DisplayFor(modelItem => item.Amount)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Price)
+                    @item.Price.ToString("C")
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
-                <td>
-                    @Html.ActionLink("Update", "Update", new { id = item.VehiclePartId }) |
-                    @Html.ActionLink("View", "View", new { id = item.VehiclePartId }) |
-                    @Html.ActionLink("Delete", "DeleteConfirmation", new { id = item.VehiclePartId })
+                <td class="text-center">
+                    <form asp-action="DeleteConfirmation" asp-route-id="@item.VehiclePartId" method="get">
+                        <a asp-action="View" asp-route-id="@item.VehiclePartId" class="btn btn-sm btn-success">
+                            View
+                        </a>
+                        <a asp-action="Update" asp-route-id="@item.VehiclePartId" class="btn btn-sm btn-warning">
+                            Edit
+                        </a>
+                        <button type="submit" class="btn btn-danger btn-sm">
+                            Delete
+                        </button>
+                    </form>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+<div class="text-center">
+    <a class="btn btn-primary" asp-action="Create">Add part</a>
+</div>

@@ -49,7 +49,7 @@ namespace WebAutopark.DataAccess.Database.Repositories
 
         public Task Update(VehicleType entity)
         {
-            const string sqlQuery = 
+            const string sqlQuery =
                 "UPDATE VehicleTypes " +
                 "SET TypeName = @TypeName, TaxCoeff = @TaxCoeff " +
                 "WHERE Id = @Id";
