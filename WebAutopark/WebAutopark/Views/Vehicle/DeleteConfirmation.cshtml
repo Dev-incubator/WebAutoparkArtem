@@ -65,6 +65,12 @@
         <dd>
             @Html.DisplayFor(model => model.CarColor)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Consumption)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Consumption)
+        </dd>
     </dl>
     
     <form asp-action="Delete" asp-route-id="@Model.VehicleId">

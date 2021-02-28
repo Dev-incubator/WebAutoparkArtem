@@ -9,6 +9,8 @@ namespace WebAutopark.BusinessLogic.ViewModels
 {
     public class VehicleViewModel
     {
+        private const double TaxMultiplier = 0.0013;
+        private const double MinimumTax = 5;
         public int VehicleId { get; set; }
         public VehicleTypeViewModel VehicleType { get; set; }
         public int VehicleTypeId { get; set; }
@@ -26,6 +28,11 @@ namespace WebAutopark.BusinessLogic.ViewModels
         public int Mileage { get; set; }
         [Required]
         public int FuelTankAmount { get; set; }
+
+        [Range(1, int.MaxValue)]
+        public double Consumption { get; set; }
+        public double? MaxKilometresRange => 100 * FuelTankAmount / Consumption;
+        public double? TaxPerMonth => (Weight * TaxMultiplier) + (VehicleType?.TaxCoeff * 30) + MinimumTax;
         public string CarColor { get; set; }
 
     }

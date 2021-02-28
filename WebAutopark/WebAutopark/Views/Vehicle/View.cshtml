@@ -64,6 +64,24 @@
         <dd>
             @Html.DisplayFor(model => model.CarColor)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Consumption)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Consumption)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MaxKilometresRange)
+        </dt>
+        <dd>
+            @Model.MaxKilometresRange.Value.ToString("0.00")
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TaxPerMonth)
+        </dt>
+        <dd>
+            @Model.TaxPerMonth.Value.ToString("0.00")
+        </dd>
     </dl>
 </div>
 <div>

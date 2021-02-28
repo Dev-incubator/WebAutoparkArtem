@@ -20,8 +20,8 @@ namespace WebAutopark.DataAccess.Database.Repositories
         {
             const string sqlQuery =
                 "INSERT INTO Vehicles" +
-                "(VehicleTypeId, ModelName, RegistrationNumber, Weight, ManufactureYear, Mileage, CarColor, FuelTankAmount) VALUES " +
-                "(@VehicleTypeId, @ModelName, @RegistrationNumber, @Weight, @ManufactureYear, @Mileage, @CarColor, @FuelTankAmount)";
+                "(VehicleTypeId, ModelName, RegistrationNumber, Weight, ManufactureYear, Mileage, CarColor, FuelTankAmount, Consumption) VALUES " +
+                "(@VehicleTypeId, @ModelName, @RegistrationNumber, @Weight, @ManufactureYear, @Mileage, @CarColor, @FuelTankAmount, @Consumption)";
 
             await _connection.ExecuteAsync(sqlQuery, entity);
         }
@@ -81,6 +81,7 @@ namespace WebAutopark.DataAccess.Database.Repositories
                    "Mileage = @Mileage, " +
                    "CarColor = @CarColor, " +
                    "FuelTankAmount = @FuelTankAmount " +
+                   "Consumption = @Consumption " +
                    "WHERE Id = @Id";
 
             await _connection.ExecuteAsync(sqlQuery, entity);

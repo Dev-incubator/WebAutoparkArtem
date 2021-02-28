@@ -19,5 +19,6 @@ namespace WebAutopark.DataAccess.Entities
         public int Mileage { get; set; }
         public string CarColor { get; set; }
         public int FuelTankAmount { get; set; }
+        public double Consumption { get; set; }
     }
 }

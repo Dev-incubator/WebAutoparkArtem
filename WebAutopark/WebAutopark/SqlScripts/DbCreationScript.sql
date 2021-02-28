@@ -123,6 +123,7 @@ CREATE TABLE [dbo].[Vehicles](
 	[Mileage] [int] NOT NULL,
 	[CarColor] [nvarchar](50) NOT NULL,
 	[FuelTankAmount] [int] NOT NULL,
+	[Consumption] [float] NOT NULL,
  CONSTRAINT [PK_Vehicle] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC

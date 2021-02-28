@@ -28,6 +28,7 @@
             </th>
             <th>Fuel tank size</th>
             <th>Color</th>
+            <th>Consumption</th>
             <th></th>
         </tr>
     </thead>
@@ -62,6 +63,9 @@
     <td>
         @Html.DisplayFor(modelItem => item.CarColor)
     </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Consumption)
+    </td>
     <td class="text-center">
         <form asp-action="DeleteConfirmation" asp-route-id="@item.VehicleId" method="get">
             <a asp-action="Update" asp-route-id="@item.VehicleId" class="btn btn-sm btn-warning">
@@ -72,7 +76,8 @@
             </button>
         </form>
     </td>
-</tr>}
+</tr>
+}
     </tbody>
 </table>
 <div class="text-center">
