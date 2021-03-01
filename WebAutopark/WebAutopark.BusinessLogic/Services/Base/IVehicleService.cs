@@ -11,6 +11,6 @@ namespace WebAutopark.BusinessLogic.Services.Base
 {
     public interface IVehicleService : IBusinessService<VehicleViewModel>
     {
-        Task<IEnumerable<VehicleViewModel>> GetAllOrderedByCriteria(Func<VehicleViewModel, object> criteria);
+        Task<IEnumerable<VehicleViewModel>> GetVehiclesAndOrderByKeySelector(Func<VehicleViewModel, object> keySelector);
     }
 }
