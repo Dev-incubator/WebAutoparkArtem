@@ -28,6 +28,7 @@ namespace WebAutopark
         {
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
             var creationScriptPath = Configuration["SqlScriptPath"];
+
             DbCreator.EnsureCreated(connectionString, creationScriptPath);
             services.AddDataAccess(connectionString);
             services.AddBusinessServices();
