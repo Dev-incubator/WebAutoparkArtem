@@ -16,14 +16,14 @@ namespace WebAutopark.DataAccess.Database.Repositories
 
         }
 
-        public async Task Create(VehicleType entity)
+        public Task Create(VehicleType entity)
         {
             const string sqlQuery =
                 "INSERT INTO VehicleTypes " +
                 "(TypeName, TaxCoeff) VALUES " +
                 "(@TypeName, @TaxCoeff)";
 
-            await _connection.ExecuteAsync(sqlQuery, entity);
+            return _connection.ExecuteAsync(sqlQuery, entity);
         }
 
         public Task Delete(int id)

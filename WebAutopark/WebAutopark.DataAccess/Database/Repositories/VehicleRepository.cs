@@ -16,23 +16,23 @@ namespace WebAutopark.DataAccess.Database.Repositories
 
         }
 
-        public async Task Create(Vehicle entity)
+        public Task Create(Vehicle entity)
         {
             const string sqlQuery =
                 "INSERT INTO Vehicles" +
                 "(VehicleTypeId, ModelName, RegistrationNumber, Weight, ManufactureYear, Mileage, CarColor, FuelTankAmount, Consumption) VALUES " +
                 "(@VehicleTypeId, @ModelName, @RegistrationNumber, @Weight, @ManufactureYear, @Mileage, @CarColor, @FuelTankAmount, @Consumption)";
 
-            await _connection.ExecuteAsync(sqlQuery, entity);
+            return _connection.ExecuteAsync(sqlQuery, entity);
         }
 
-        public async Task Delete(int id)
+        public Task Delete(int id)
         {
             const string sqlQuery =
                 "DELETE FROM Vehicles " +
                 "WHERE Id = @id";
 
-            await _connection.ExecuteAsync(sqlQuery, new { id });
+            return _connection.ExecuteAsync(sqlQuery, new { id });
         }
 
         public Task<IEnumerable<Vehicle>> GetAll()
@@ -69,7 +69,7 @@ namespace WebAutopark.DataAccess.Database.Repositories
            return queryResult.SingleOrDefault();
         }
 
-        public async Task Update(Vehicle entity)
+        public Task Update(Vehicle entity)
         {
             const string sqlQuery =
                    "UPDATE Vehicles " +
@@ -84,7 +84,7 @@ namespace WebAutopark.DataAccess.Database.Repositories
                    "Consumption = @Consumption " +
                    "WHERE Id = @Id";
 
-            await _connection.ExecuteAsync(sqlQuery, entity);
+            return _connection.ExecuteAsync(sqlQuery, entity);
 
         }
     }
