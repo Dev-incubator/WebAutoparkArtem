@@ -27,24 +27,24 @@ namespace WebAutopark.BusinessLogic.Services
         {
             var vehicle = _mapper.Map<Vehicle>(viewModel);
 
-            return _vehicleRepository.CreateAsync(vehicle);
+            return _vehicleRepository.Create(vehicle);
         }
 
         public Task Delete(int id)
         {
-            return _vehicleRepository.DeleteAsync(id);
+            return _vehicleRepository.Delete(id);
         }
 
         public async Task<IEnumerable<VehicleViewModel>> GetAll()
         {
-            var vehicleEntities = await _vehicleRepository.GetAllAsync();
+            var vehicleEntities = await _vehicleRepository.GetAll();
 
             return _mapper.Map<IEnumerable<VehicleViewModel>>(vehicleEntities);
         }
 
         public async Task<IEnumerable<VehicleViewModel>> GetAllOrderedByCriteria(Func<VehicleViewModel, object> criteria)
         {
-            var vehicleEntities = await _vehicleRepository.GetAllAsync();
+            var vehicleEntities = await _vehicleRepository.GetAll();
 
             var viewModelsList = _mapper.Map<IEnumerable<VehicleViewModel>>(vehicleEntities);
 
@@ -53,7 +53,7 @@ namespace WebAutopark.BusinessLogic.Services
 
         public async Task<VehicleViewModel> GetById(int id)
         {
-            var foundedVehicle = await _vehicleRepository.GetByIdAsync(id);
+            var foundedVehicle = await _vehicleRepository.GetById(id);
 
             return _mapper.Map<VehicleViewModel>(foundedVehicle);
         }
@@ -62,7 +62,7 @@ namespace WebAutopark.BusinessLogic.Services
         {
             var mappedEntity = _mapper.Map<Vehicle>(viewModel);
 
-            return _vehicleRepository.UpdateAsync(mappedEntity);
+            return _vehicleRepository.Update(mappedEntity);
         }
     }
 }
