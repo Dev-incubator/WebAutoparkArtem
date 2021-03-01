@@ -1,8 +1,6 @@
 ﻿@model IEnumerable<VehicleViewModel>
 
-@{
-    ViewData["Title"] = "ViewVehicles";
-}
+@{ ViewData["Title"] = "ViewVehicles"; }
 
 <h1>ViewVehicles</h1>
 
@@ -10,59 +8,75 @@
     <thead class="thead-light">
         <tr>
             <th>Id</th>
-            <th>Vehicle type</th>
-            <th>Model</th>
+            <th>
+                <a asp-action="ViewList" asp-route-orderBy="VehicleType">
+                    VehicleType
+                </a>
+            </th>
+            <th>
+                <a asp-action="ViewList" asp-route-orderBy="Name">
+                    Model name
+                </a>
+            </th>
             <th>Registration number</th>
             <th>Weight</th>
             <th>Manufacture Year</th>
-            <th>Mileage</th>
+            <th>
+                <a asp-action="ViewList" asp-route-orderBy="Mileage">
+                    Mileage
+                </a>
+            </th>
             <th>Fuel tank size</th>
             <th>Color</th>
+            <th>Consumption</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr href="@item.VehicleId">
-            <td>
-                @Html.DisplayFor(modelItem => item.VehicleId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.VehicleType.TypeName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ModelName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RegistrationNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Weight)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ManufactureYear)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Mileage)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FuelTankAmount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CarColor)
-            </td>
-            <td class="text-center">
-                <form asp-action="Delete" method="post">
-                    <a asp-action="Update" asp-route-id="@item.VehicleId" class="btn btn-sm btn-warning">
-                        Edit
-                    </a>
-                    <input type="hidden" value="@item.VehicleId"/>
-                    <button type="submit" class="btn btn-danger btn-sm">
-                        Delete
-                    </button>
-                </form>
-            </td>
-        </tr>
+        @foreach (var item in Model)
+        {
+<tr href="@item.VehicleId">
+    <td>
+        @Html.DisplayFor(modelItem => item.VehicleId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.VehicleType.TypeName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ModelName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.RegistrationNumber)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Weight)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ManufactureYear)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Mileage)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FuelTankAmount)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CarColor)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Consumption)
+    </td>
+    <td class="text-center">
+        <form asp-action="DeleteConfirmation" asp-route-id="@item.VehicleId" method="get">
+            <a asp-action="Update" asp-route-id="@item.VehicleId" class="btn btn-sm btn-warning">
+                Edit
+            </a>
+            <button type="submit" class="btn btn-danger btn-sm">
+                Delete
+            </button>
+        </form>
+    </td>
+</tr>
 }
     </tbody>
 </table>

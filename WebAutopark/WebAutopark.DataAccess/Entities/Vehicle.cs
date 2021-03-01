@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using WebAutopark.DataAccess.Entities.Base;
 
 
-namespace WebAutopark.DataAccess.Models
+namespace WebAutopark.DataAccess.Entities
 {
     public class Vehicle : Entity
     {
@@ -19,5 +19,6 @@ namespace WebAutopark.DataAccess.Models
         public int Mileage { get; set; }
         public string CarColor { get; set; }
         public int FuelTankAmount { get; set; }
+        public double Consumption { get; set; }
     }
 }

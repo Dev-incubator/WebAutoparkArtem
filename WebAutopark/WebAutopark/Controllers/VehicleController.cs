@@ -11,11 +11,11 @@ namespace WebAutopark.Controllers
 {
     public class VehicleController : Controller
     {
-        private readonly IBusinessService<VehicleViewModel> _vehicleService;
+        private readonly IVehicleService _vehicleService;
         private readonly IBusinessService<VehicleTypeViewModel> _vehicleTypeService;
 
         public VehicleController(
-            IBusinessService<VehicleViewModel> vehicleService, 
+            IVehicleService vehicleService, 
             IBusinessService<VehicleTypeViewModel> vehicleTypeService)
         {
             _vehicleService = vehicleService;
@@ -78,9 +78,31 @@ namespace WebAutopark.Controllers
             return RedirectToAction("ViewList");
         }
 
+        [HttpGet]
         public async Task<IActionResult> ViewList()
         {
             var vehicleList = await _vehicleService.GetAll();
+
+            return View(vehicleList);
+
+        }
+        [HttpGet("{orderBy}")]
+        public async Task<IActionResult> ViewList(string orderBy)
+        {
+            Func<VehicleViewModel, object> keySelector = orderBy switch
+            {
+                "Name" => new Func<VehicleViewModel, object>(viewModel => viewModel.ModelName),
+                "VehicleType" => new Func<VehicleViewModel, object>(viewModel => viewModel.VehicleType.TypeName),
+                "Mileage" => new Func<VehicleViewModel, object>(viewModel => viewModel.Mileage),
+                _ => null
+            };
+
+            if (keySelector is null)
+            {
+                return NoContent();
+            }
+
+            var vehicleList = await _vehicleService.GetVehiclesAndOrderByKeySelector(keySelector);
 
             return View(vehicleList);
 

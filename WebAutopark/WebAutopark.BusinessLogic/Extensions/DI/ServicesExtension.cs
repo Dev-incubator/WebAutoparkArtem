@@ -15,7 +15,7 @@ namespace WebAutopark.BusinessLogic.Extensions.DI
         public static void AddBusinessServices(this IServiceCollection services)
         {
             services.AddScoped<IBusinessService<VehicleTypeViewModel>, VehicleTypeService>();
-            services.AddScoped<IBusinessService<VehicleViewModel>, VehicleService>();
+            services.AddScoped<IVehicleService, VehicleService>();
         }
     }
 }

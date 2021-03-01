@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using WebAutopark.BusinessLogic.Services.Base;
 using WebAutopark.BusinessLogic.ViewModels;
 using WebAutopark.DataAccess.Database.Repositories.Base;
-using WebAutopark.DataAccess.Models;
+using WebAutopark.DataAccess.Entities;
 
 namespace WebAutopark.BusinessLogic.Services
 {
@@ -26,24 +26,24 @@ namespace WebAutopark.BusinessLogic.Services
         {
             var mappedEntity = _mapper.Map<VehicleType>(viewModel);
 
-            return _vehicleTypeRepository.CreateAsync(mappedEntity);
+            return _vehicleTypeRepository.Create(mappedEntity);
         }
 
         public Task Delete(int id)
         {
-            return _vehicleTypeRepository.DeleteAsync(id);
+            return _vehicleTypeRepository.Delete(id);
         }
 
         public async Task<VehicleTypeViewModel> GetById(int id)
         {
-            var foundedEntity = await _vehicleTypeRepository.GetByIdAsync(id);
+            var foundedEntity = await _vehicleTypeRepository.GetById(id);
 
             return _mapper.Map<VehicleTypeViewModel>(foundedEntity);
         }
 
         public async Task<IEnumerable<VehicleTypeViewModel>> GetAll()
         {
-            var vehicleTypeEntities = await _vehicleTypeRepository.GetAllAsync();
+            var vehicleTypeEntities = await _vehicleTypeRepository.GetAll();
 
             return _mapper.Map<IEnumerable<VehicleTypeViewModel>>(vehicleTypeEntities);
         }
@@ -52,7 +52,7 @@ namespace WebAutopark.BusinessLogic.Services
         {
             var mappedEntity = _mapper.Map<VehicleType>(viewModel);
 
-            return _vehicleTypeRepository.UpdateAsync(mappedEntity);
+            return _vehicleTypeRepository.Update(mappedEntity);
         }
     }
 }

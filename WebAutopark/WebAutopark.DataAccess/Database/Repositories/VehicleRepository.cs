@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WebAutopark.DataAccess.Database.Repositories.Base;
-using WebAutopark.DataAccess.Models;
+using WebAutopark.DataAccess.Entities;
 
 namespace WebAutopark.DataAccess.Database.Repositories
 {
@@ -16,26 +16,26 @@ namespace WebAutopark.DataAccess.Database.Repositories
 
         }
 
-        public async Task CreateAsync(Vehicle entity)
+        public Task Create(Vehicle entity)
         {
             const string sqlQuery =
                 "INSERT INTO Vehicles" +
-                "(VehicleTypeId, ModelName, RegistrationNumber, Weight, ManufactureYear, Mileage, CarColor, FuelTankAmount) VALUES " +
-                "(@VehicleTypeId, @ModelName, @RegistrationNumber, @Weight, @ManufactureYear, @Mileage, @CarColor, @FuelTankAmount)";
+                "(VehicleTypeId, ModelName, RegistrationNumber, Weight, ManufactureYear, Mileage, CarColor, FuelTankAmount, Consumption) VALUES " +
+                "(@VehicleTypeId, @ModelName, @RegistrationNumber, @Weight, @ManufactureYear, @Mileage, @CarColor, @FuelTankAmount, @Consumption)";
 
-            await _connection.ExecuteAsync(sqlQuery, entity);
+            return _connection.ExecuteAsync(sqlQuery, entity);
         }
 
-        public async Task DeleteAsync(int id)
+        public Task Delete(int id)
         {
             const string sqlQuery =
                 "DELETE FROM Vehicles " +
                 "WHERE Id = @id";
 
-            await _connection.ExecuteAsync(sqlQuery, new { id });
+            return _connection.ExecuteAsync(sqlQuery, new { id });
         }
 
-        public Task<IEnumerable<Vehicle>> GetAllAsync()
+        public Task<IEnumerable<Vehicle>> GetAll()
         {
             const string sqlQuery =
                 "SELECT * FROM Vehicles LEFT JOIN VehicleTypes " +
@@ -50,7 +50,7 @@ namespace WebAutopark.DataAccess.Database.Repositories
 
         }
 
-        public async Task<Vehicle> GetByIdAsync(int id)
+        public async Task<Vehicle> GetById(int id)
         {
             const string sqlQuery = 
                 "SELECT * FROM Vehicles vehicle " +
@@ -69,7 +69,7 @@ namespace WebAutopark.DataAccess.Database.Repositories
            return queryResult.SingleOrDefault();
         }
 
-        public async Task UpdateAsync(Vehicle entity)
+        public Task Update(Vehicle entity)
         {
             const string sqlQuery =
                    "UPDATE Vehicles " +
@@ -81,9 +81,10 @@ namespace WebAutopark.DataAccess.Database.Repositories
                    "Mileage = @Mileage, " +
                    "CarColor = @CarColor, " +
                    "FuelTankAmount = @FuelTankAmount " +
+                   "Consumption = @Consumption " +
                    "WHERE Id = @Id";
 
-            await _connection.ExecuteAsync(sqlQuery, entity);
+            return _connection.ExecuteAsync(sqlQuery, entity);
 
         }
     }
