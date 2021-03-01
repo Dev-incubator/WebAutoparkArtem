@@ -26,25 +26,25 @@ namespace WebAutopark.BusinessLogic.Services
         {
             var mappedEntity = _mapper.Map<VehiclePart>(viewModel);
 
-            return _vehiclePartRepository.CreateAsync(mappedEntity);
+            return _vehiclePartRepository.Create(mappedEntity);
 
         }
 
         public Task Delete(int id)
         {
-            return _vehiclePartRepository.DeleteAsync(id);
+            return _vehiclePartRepository.Delete(id);
         }
 
         public async Task<IEnumerable<VehiclePartViewModel>> GetAll()
         {
-            var vehiclePartsList = await _vehiclePartRepository.GetAllAsync();
+            var vehiclePartsList = await _vehiclePartRepository.GetAll();
 
             return _mapper.Map<IEnumerable<VehiclePartViewModel>>(vehiclePartsList);
         }
 
         public async Task<VehiclePartViewModel> GetById(int id)
         {
-            var foundedEntity = await _vehiclePartRepository.GetByIdAsync(id);
+            var foundedEntity = await _vehiclePartRepository.GetById(id);
 
             return _mapper.Map<VehiclePartViewModel>(foundedEntity);
         }
@@ -53,7 +53,7 @@ namespace WebAutopark.BusinessLogic.Services
         {
             var mappedEntity = _mapper.Map<VehiclePart>(viewModel);
 
-            return _vehiclePartRepository.UpdateAsync(mappedEntity);
+            return _vehiclePartRepository.Update(mappedEntity);
         }
     }
 }
