@@ -89,7 +89,7 @@ namespace WebAutopark.Controllers
         [HttpGet("{orderBy}")]
         public async Task<IActionResult> ViewList(string orderBy)
         {
-            Func<VehicleViewModel, object> orderByCriteria = orderBy switch
+            Func<VehicleViewModel, object> keySelector = orderBy switch
             {
                 "Name" => new Func<VehicleViewModel, object>(viewModel => viewModel.ModelName),
                 "VehicleType" => new Func<VehicleViewModel, object>(viewModel => viewModel.VehicleType.TypeName),
@@ -97,12 +97,12 @@ namespace WebAutopark.Controllers
                 _ => null
             };
 
-            if (orderByCriteria is null)
+            if (keySelector is null)
             {
                 return NoContent();
             }
 
-            var vehicleList = await _vehicleService.GetAllOrderedByCriteria(orderByCriteria);
+            var vehicleList = await _vehicleService.GetVehiclesAndOrderByKeySelector(keySelector);
 
             return View(vehicleList);
 

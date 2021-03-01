@@ -42,13 +42,13 @@ namespace WebAutopark.BusinessLogic.Services
             return _mapper.Map<IEnumerable<VehicleViewModel>>(vehicleEntities);
         }
 
-        public async Task<IEnumerable<VehicleViewModel>> GetAllOrderedByCriteria(Func<VehicleViewModel, object> criteria)
+        public async Task<IEnumerable<VehicleViewModel>> GetVehiclesAndOrderByKeySelector(Func<VehicleViewModel, object> keySelector)
         {
             var vehicleEntities = await _vehicleRepository.GetAll();
 
             var viewModelsList = _mapper.Map<IEnumerable<VehicleViewModel>>(vehicleEntities);
 
-            return viewModelsList.OrderBy(criteria).ToList();
+            return viewModelsList.OrderBy(keySelector).ToList();
         }
 
         public async Task<VehicleViewModel> GetById(int id)
