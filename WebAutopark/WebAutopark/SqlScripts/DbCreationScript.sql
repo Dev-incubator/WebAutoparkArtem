@@ -209,8 +209,8 @@ GO
 CREATE TABLE [dbo].[OrderDetails](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[OrderId] [int] NOT NULL,
-	[DetailId] [int] NOT NULL,
-	[DetailAmount] [int] NOT NULL,
+	[PartId] [int] NOT NULL,
+	[PartAmount] [int] NOT NULL,
  CONSTRAINT [PK_OrderDetail] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
@@ -222,7 +222,7 @@ ALTER TABLE [dbo].OrderDetails  WITH CHECK ADD FOREIGN KEY([OrderId])
 REFERENCES [dbo].[Orders] ([Id]) ON DELETE CASCADE
 GO
 
-ALTER TABLE [dbo].[OrderDetails]  WITH CHECK ADD FOREIGN KEY([DetailId])
+ALTER TABLE [dbo].[OrderDetails]  WITH CHECK ADD FOREIGN KEY([PartId])
 REFERENCES [dbo].[VehicleParts] ([Id]) 
 GO
 

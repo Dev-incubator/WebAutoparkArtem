@@ -10,7 +10,8 @@ namespace WebAutopark.BusinessLogic.ViewModels
     {
         public int OrderDetailId { get; set; }
         public int OrderId { get; set; }
-        public int DetailId { get; set; }
-        public int DetailAmount { get; set; }
+        public VehiclePartViewModel Part { get; set; }
+        public int PartId { get; set; }
+        public int PartAmount { get; set; }
     }
 }
