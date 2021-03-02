@@ -43,7 +43,7 @@ namespace WebAutopark.DataAccess.Database.Repositories
 
             return _connection.QueryAsync<OrderDetail, VehiclePart, OrderDetail>(sqlQuery, (orderDetail, part) =>
             {
-                orderDetail.VehiclePart = part;
+                orderDetail.Part = part;
                 return orderDetail;
             });
         }
@@ -57,7 +57,7 @@ namespace WebAutopark.DataAccess.Database.Repositories
 
             var queryResult = await _connection.QueryAsync<OrderDetail, VehiclePart, OrderDetail>(sqlQuery, (orderDetail, part) =>
             {
-                orderDetail.VehiclePart = part;
+                orderDetail.Part = part;
                 return orderDetail;
             }, new { id });
 

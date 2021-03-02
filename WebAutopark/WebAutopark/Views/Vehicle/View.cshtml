@@ -3,49 +3,64 @@
 @{ ViewData["Title"] = "View"; }
 
 
-<div>
-    <h4>Vehicle: @Model.ModelName</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>Id</dt>
-        <dd>@Html.DisplayFor(model => model.VehicleId)</dd>
+<div class="card">
+    <div class="card-header">
+        <h4 class="text-center">Vehicle: @Model.ModelName</h4>
+    </div>
 
-        <dt>Type</dt>
-        <dd> @Html.DisplayFor(model => model.VehicleType.TypeName)</dd>
+    <div class="card-body">
+        <div class="form-group row">
+            <label class="col-form-label col-sm-3">Vehicle Type:</label>
+            <input asp-for="VehicleType.TypeName" readonly="readonly" class="form-control col col-sm-8" />
+        </div>
+        <div class="form-group row">
+            <label class="col-form-label col-sm-3">Model name:</label>
+            <input asp-for="ModelName" readonly="readonly" class="form-control col col-sm-8" />
+        </div>
+        <div class="form-group row">
+            <label class="col-form-label col-sm-3">Registration number:</label>
+            <input asp-for="RegistrationNumber" readonly="readonly" class="form-control col col-sm-8" />
+        </div>
+        <div class="form-group row">
+            <label class="col-form-label col-sm-3">Weight:</label>
+            <input asp-for="Weight" readonly="readonly" class="form-control col col-sm-8" />
+        </div>
+        <div class="form-group row">
+            <label class="col-form-label col-sm-3">Manufacture year:</label>
+            <input asp-for="ManufactureYear" readonly="readonly" class="form-control col col-sm-8" />
+        </div>
+        <div class="form-group row">
+            <label class="col-form-label col-sm-3">Mileage:</label>
+            <input asp-for="Mileage" readonly="readonly" class="form-control col col-sm-8" />
+        </div>
+        <div class="form-group row">
+            <label class="col-form-label col-sm-3">Fuel tank:</label>
+            <input asp-for="FuelTankAmount" readonly="readonly" class="form-control col col-sm-8" />
+        </div>
+        <div class="form-group row">
+            <label class="col-form-label col-sm-3">Color:</label>
+            <input asp-for="CarColor" readonly="readonly" class="form-control col col-sm-8" />
+        </div>
+        <div class="form-group row">
+            <label class="col-form-label col-sm-3">Consumption:</label>
+            <input asp-for="Consumption" readonly="readonly" class="form-control col col-sm-8" />
+        </div>
 
-        <dt>Model name</dt>
-        <dd> @Html.DisplayFor(model => model.ModelName)</dd>
+        <div class="form-group row">
+            <label class="col-form-label col-sm-3">Max range (km):</label>
+            <input asp-for="MaxKilometresRange" readonly="readonly" value="@Model.MaxKilometresRange.Value.ToString("0.00")" class="form-control col col-sm-8"/>
+        </div>
 
-        <dt>Registration number</dt>
-        <dd> @Html.DisplayFor(model => model.RegistrationNumber)</dd>
-
-        <dt>Weight</dt>
-        <dd>@Html.DisplayFor(model => model.Weight)</dd>
-
-        <dt>Year</dt>
-        <dd>@Html.DisplayFor(model => model.ManufactureYear)</dd>
-
-        <dt>Mileage</dt>
-        <dd> @Html.DisplayFor(model => model.Mileage)</dd>
-
-        <dt>Fuel tank size</dt>
-        <dd>@Html.DisplayFor(model => model.FuelTankAmount)</dd>
-
-        <dt> Color </dt>
-        <dd> @Html.DisplayFor(model => model.CarColor)</dd>
-
-        <dt>Consumption</dt>
-        <dd>@Html.DisplayFor(model => model.Consumption)</dd>
-
-        <dt>Max drive range</dt>
-        <dd>@Model.MaxKilometresRange.Value.ToString("0.00")</dd>
-
-        <dt>Tax per month</dt>
-        <dd>@Model.TaxPerMonth.Value.ToString("0.00")</dd>
-    </dl>
+        <div class="form-group row">
+            <label class="col-form-label col-sm-3">Tax per month:</label>
+            <input asp-for="TaxPerMonth" readonly="readonly" value="@Model.TaxPerMonth.Value.ToString("0.00")" class="form-control col col-sm-8"/>
+        </div>
+        <div class="text-center my-2">
+            <a asp-action="Update" asp-route-id="@Model.VehicleId" class="btn btn-warning">Edit</a> |
+            <a asp-action="ViewList" class="btn btn-primary">Back to List</a>
+        </div>
+    </div>
+    
 </div>
 
-<div>
-    @Html.ActionLink("Update", "Update", new { id = Model.VehicleId }) |
-    <a asp-action="ViewList">Back to List</a>
-</div>
+

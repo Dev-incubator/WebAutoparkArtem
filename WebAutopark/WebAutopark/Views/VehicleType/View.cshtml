@@ -4,33 +4,24 @@
     ViewData["Title"] = "View";
 }
 
-<h2>View</h2>
 
-<div>
-    <h4>VehicleTypeViewModel</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.VehicleTypeId)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.VehicleTypeId)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.TypeName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.TypeName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.TaxCoeff)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.TaxCoeff)
-        </dd>
-    </dl>
+<div class="card">
+    <div class="card-header">
+        <h4 class="text-center">Type: @Model.TypeName</h4>
+    </div>
+    <div class="card-body">
+        <div class="form-group row">
+            <label class="col-form-label col-sm-3">Name:</label>
+            <input asp-for="TypeName" readonly="readonly" class="form-control col col-sm-8" />
+        </div>
+        <div class="form-group row">
+            <label class="col-form-label col-sm-3">Tax coefficent:</label>
+            <input asp-for="TaxCoeff" readonly="readonly" class="form-control col col-sm-8" />
+        </div>
+        <div class="text-center my-2">
+            <a asp-action="Update" asp-route-id="@Model.VehicleTypeId" class="btn btn-warning">Edit</a> |
+            <a asp-action="ViewList" class="btn btn-primary">Back to List</a>
+        </div>
+    </div>
 </div>
-<div class="text-center">
-    <a asp-action="Update" asp-route-id="@Model.VehicleTypeId" class="btn btn-warning">Edit</a> |
-    <a asp-action="ViewList" class="btn btn-primary">Back to List</a>
-</div>
+
