@@ -15,7 +15,7 @@ namespace WebAutopark.Controllers
         private readonly IBusinessService<VehicleTypeViewModel> _vehicleTypeService;
 
         public VehicleController(
-            IVehicleService vehicleService, 
+            IVehicleService vehicleService,
             IBusinessService<VehicleTypeViewModel> vehicleTypeService)
         {
             _vehicleService = vehicleService;
