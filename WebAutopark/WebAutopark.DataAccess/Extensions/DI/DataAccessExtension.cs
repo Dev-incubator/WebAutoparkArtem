@@ -17,6 +17,7 @@ namespace WebAutopark.DataAccess.Extensions.DI
             services.AddScoped<IDbConnectionBuilder, DbConnectionBuilder>(provider => new DbConnectionBuilder(connectionString));
             services.AddScoped<IRepository<VehicleType>, VehicleTypeRepository>();
             services.AddScoped<IRepository<Vehicle>, VehicleRepository>();
+            services.AddScoped<IRepository<VehiclePart>, VehiclePartRepository>();
         }
     }
 }

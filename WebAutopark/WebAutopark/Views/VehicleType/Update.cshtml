@@ -1,38 +1,34 @@
 ﻿@model VehicleTypeViewModel
 
-@{
-    ViewData["Title"] = "Update";
-}
+@{ ViewData["Title"] = "Update"; }
 
-<h2>Update</h2>
-
-<h4>VehicleTypeViewModel</h4>
+<hr>
+<h2>Update vehicle type: @Model.TypeName</h2>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Update">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            
-            <input asp-for="VehicleTypeId" hidden="hidden"/>
+
+            <input asp-for="VehicleTypeId" hidden="hidden" />
             <div class="form-group">
-                <label asp-for="TypeName" class="control-label"></label>
+                <label class="control-label">Name</label>
                 <input asp-for="TypeName" class="form-control" />
                 <span asp-validation-for="TypeName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="TaxCoeff" class="control-label"></label>
+                <label class="control-label">Tax coefficent</label>
                 <input asp-for="TaxCoeff" class="form-control" />
                 <span asp-validation-for="TaxCoeff" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
+            <div class="form-group text-center">
+                <input type="submit" value="Save" class="btn btn-outline-success" /> |
+                <a asp-action="ViewList" class="btn btn-primary">Back to List</a>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 

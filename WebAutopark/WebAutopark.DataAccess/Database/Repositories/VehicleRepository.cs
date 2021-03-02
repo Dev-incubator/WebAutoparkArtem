@@ -80,7 +80,7 @@ namespace WebAutopark.DataAccess.Database.Repositories
                    "ManufactureYear = @ManufactureYear, " +
                    "Mileage = @Mileage, " +
                    "CarColor = @CarColor, " +
-                   "FuelTankAmount = @FuelTankAmount " +
+                   "FuelTankAmount = @FuelTankAmount, " +
                    "Consumption = @Consumption " +
                    "WHERE Id = @Id";
 

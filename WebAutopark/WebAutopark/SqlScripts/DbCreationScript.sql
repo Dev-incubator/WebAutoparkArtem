@@ -166,7 +166,7 @@ CREATE TABLE [dbo].[VehicleParts](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Name] [nvarchar](50) NOT NULL,
 	[Amount] [int] NOT NULL,
-	[Price] [int] NOT NULL,
+	[Price] [float] NOT NULL,
 	[Description] [nvarchar](150) NULL,
  CONSTRAINT [PK_Detail] PRIMARY KEY CLUSTERED 
 (

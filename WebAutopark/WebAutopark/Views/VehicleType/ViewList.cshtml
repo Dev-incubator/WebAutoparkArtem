@@ -1,47 +1,54 @@
 ﻿@model IEnumerable<VehicleTypeViewModel>
 
-@{
-    ViewData["Title"] = "ViewList";
-}
+@{ ViewData["Title"] = "ViewList"; }
 
 <h2>ViewList</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
+<table class="table table-striped table-borderless table-sm">
+    <thead class="thead-light">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.VehicleTypeId)
+                Id
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TypeName)
+                Name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TaxCoeff)
+                Tax coefficent
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.VehicleTypeId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TypeName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TaxCoeff)
-            </td>
-            <td>
-                @Html.ActionLink("Update", "Update", new { id = item.VehicleTypeId }) |
-                @Html.ActionLink("View", "View", new { id = item.VehicleTypeId }) |
-                @Html.ActionLink("DeleteConfirmation", "DeleteConfirmation", new {  id=item.VehicleTypeId  })
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.VehicleTypeId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TypeName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TaxCoeff)
+    </td>
+    <td class="text-center">
+        <form asp-action="DeleteConfirmation" asp-route-id="@item.VehicleTypeId" method="get">
+            <a asp-action="View" asp-route-id="@item.VehicleTypeId" class="btn btn-sm btn-success">
+                View
+            </a>
+            <a asp-action="Update" asp-route-id="@item.VehicleTypeId" class="btn btn-sm btn-warning">
+                Edit
+            </a>
+            <button type="submit" class="btn btn-danger btn-sm">
+                Delete
+            </button>
+        </form>
+    </td>
+</tr>}
     </tbody>
 </table>
+
+<div class="text-center">
+    <a class="btn btn-primary" asp-action="Create">Add type</a>
+</div>

@@ -10,7 +10,8 @@ namespace WebAutopark.DataAccess.Entities
     public class VehiclePart : Entity
     {
         public string Name { get; set; }
-        public int Price { get; set; }
+        public double Price { get; set; }
+        public int Amount { get; set; }
         public string Description { get; set; }
     }
 }
