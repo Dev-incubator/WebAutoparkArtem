@@ -10,7 +10,8 @@ namespace WebAutopark.DataAccess.Entities
     public class OrderDetail : Entity
     {
         public int OrderId { get; set; }
-        public int DetailId { get; set; }
-        public int DetailAmount { get; set; }
+        public VehiclePart Part { get; set; }
+        public int PartId { get; set; }
+        public int PartAmount { get; set; }
     }
 }

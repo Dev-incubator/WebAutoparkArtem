@@ -3,47 +3,32 @@
 @{
     ViewData["Title"] = "DeleteConfirmation";
 }
-<hr />
-<h2>Delete vehicle part: @Model.Name</h2>
-<hr />
 
-<div>
-    <h3 class="text-center text-danger">Are you sure you want to delete this?</h3>
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.VehiclePartId)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.VehiclePartId)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Amount)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Amount)
-        </dd>
-        <dt>
-            @Model.Price.ToString("C")
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-    </dl>
+<div class="card">
+    <div class="card-header">
+        <h4 class="text-center text-danger">Are you sure you want to delete this?</h4>
+    </div>
+    <div class="card-body">
+        <div class="form-group row">
+            <label class="col-form-label col-sm-3">Name:</label>
+            <input asp-for="Name" readonly="readonly" class="form-control col col-sm-8" />
+        </div>
+        <div class="form-group row">
+            <label class="col-form-label col-sm-3">Price:</label>
+            <input asp-for="Price" readonly="readonly" value="@Model.Price.ToString("C")" class="form-control col col-sm-8" />
+        </div>
+        <div class="form-group row">
+            <label class="col-form-label col-sm-3">Amount:</label>
+            <input asp-for="Amount" readonly="readonly" class="form-control col col-sm-8" />
+        </div>
+        <div class="form-group row">
+            <label class="col-form-label col-sm-3">Description:</label>
+            <textarea readonly="readonly" class="form-control col col-sm-8">@Model.Description</textarea>
+        </div>
+    </div>
 
-    <form asp-action="DeleteConfirmation" asp-route-id="@Model.VehiclePartId" method="post">
-        <div class="text-center">
+    <form asp-action="Delete" asp-route-id="@Model.VehiclePartId" method="post">
+        <div class="text-center my-2">
             <input type="submit" value="Delete" class="btn btn-outline-danger" /> |
             <a asp-action="ViewList" class="btn btn-primary">Back to List</a>
         </div>

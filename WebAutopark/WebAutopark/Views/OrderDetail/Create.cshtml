@@ -1,0 +1,39 @@
+﻿@model OrderDetailViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+
+<div class="card">
+    <div class="card-header">
+        <h4>Create new order detail</h4>
+    </div>
+    <div class="card-body">
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Select part: </label>
+                <select class="form-control" asp-for="PartId" asp-items="ViewBag.Parts">
+                </select>
+                <span asp-validation-for="PartId" class="text-danger"></span>
+            </div>
+
+            <input asp-for="OrderDetailId" hidden="hidden"/>
+            <input asp-for="OrderId" hidden="hidden" />
+
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Amount: </label>
+                <input asp-for="PartAmount" class="form-control col-sm-9" />
+                <span asp-validation-for="PartAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group text-center">
+                <input type="submit" value="Create" class="btn btn-outline-success mx-auto" /> |
+                <a asp-action="View" asp-controller="Order" asp-route-id="@Model.OrderId" class="btn btn-primary mx-auto">Back to order</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+

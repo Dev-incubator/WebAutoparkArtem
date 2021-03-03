@@ -2,32 +2,32 @@
 
 @{ ViewData["Title"] = "Create"; }
 
-<h2>Add new part</h2>
 
-<hr />
-<section class="container">
-    <div class="row">
-        <div class="col-md-4">
-            <form asp-action="Create" method="post">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-                    <label class="control-label">Name</label>
-                    <input asp-for="TypeName" class="form-control" />
-                    <span asp-validation-for="TypeName" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label class="control-label">Tax coefficent</label>
-                    <input asp-for="TaxCoeff" class="form-control" />
-                    <span asp-validation-for="TaxCoeff" class="text-danger"></span>
-                </div>
-                <div class="form-group text-center">
-                    <input type="submit" value="Create" class="btn btn-outline-success" /> |
-                    <a asp-action="ViewList" class="btn btn-primary">Back to List</a>
-                </div>
-            </form>
-        </div>
+<div class="card">
+    <div class="card-header">
+        <h4 class="text-center">Add new part</h4>
     </div>
-</section>
+    <div class="card-body">
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">Name</label>
+                <input asp-for="TypeName" class="form-control" />
+                <span asp-validation-for="TypeName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Tax coefficent</label>
+                <input asp-for="TaxCoeff" class="form-control" />
+                <span asp-validation-for="TaxCoeff" class="text-danger"></span>
+            </div>
+            <div class="form-group text-center my-2">
+                <input type="submit" value="Create" class="btn btn-outline-success" /> |
+                <a asp-action="ViewList" class="btn btn-primary">Back to List</a>
+            </div>
+        </form>
+
+    </div>
+</div>
 
 
 
