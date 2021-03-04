@@ -19,10 +19,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\WebAutopark.BusinessLogic\WebAutopark.BusinessLogic.csproj" />
       <ProjectReference Include="..\WebAutopark.DataAccess\WebAutopark.DataAccess.csproj" />
     </ItemGroup>
