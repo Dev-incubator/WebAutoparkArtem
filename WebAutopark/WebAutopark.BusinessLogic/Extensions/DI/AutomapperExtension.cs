@@ -40,6 +40,12 @@ namespace WebAutopark.BusinessLogic.Extensions.DI
                     cfg.CreateMap<OrderDetailViewModel, OrderDetail>()
                     .ForMember(dest => dest.Id, act => act.MapFrom(src => src.OrderDetailId));
 
+                    cfg.CreateMap<Order, OrderViewModel>()
+                    .ForMember(dest => dest.OrderId, act => act.MapFrom(src => src.Id));
+
+                    cfg.CreateMap<OrderViewModel, Order>()
+                    .ForMember(dest => dest.Id, act => act.MapFrom(src => src.OrderId));
+
                 }
             );
         }

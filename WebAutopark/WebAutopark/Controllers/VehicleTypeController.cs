@@ -52,7 +52,7 @@ namespace WebAutopark.Controllers
         {
             await _vehicleTypeService.Create(viewModel);
 
-            return RedirectToAction("ViewList");
+            return RedirectToAction(nameof(ViewList));
         }
 
         // GET: VehicleTypeController/Update/5
@@ -76,7 +76,7 @@ namespace WebAutopark.Controllers
         {
             await _vehicleTypeService.Update(viewModel);
 
-            return RedirectToAction("ViewList");
+            return RedirectToAction(nameof(ViewList));
         }
 
         [HttpGet]
@@ -98,7 +98,7 @@ namespace WebAutopark.Controllers
         {
             await _vehicleTypeService.Delete(id);
 
-            return RedirectToAction("ViewList");
+            return RedirectToAction(nameof(ViewList));
         }
 
     }

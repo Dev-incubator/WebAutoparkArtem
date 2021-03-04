@@ -52,11 +52,11 @@ namespace WebAutopark.DataAccess.Database.Repositories
 
         public async Task<Vehicle> GetById(int id)
         {
-            const string sqlQuery = 
-                "SELECT * FROM Vehicles vehicle " +
-                "INNER JOIN VehicleTypes vehicleType " +
-                "ON vehicle.VehicleTypeId = vehicleType.Id " +
-                "WHERE vehicle.Id = @id";
+            const string sqlQuery =
+                "SELECT * FROM Vehicles v " +
+                "INNER JOIN VehicleTypes vt " +
+                "ON v.VehicleTypeId = vt.Id " +
+                "WHERE v.Id = @id";
 
             var queryResult = await _connection.QueryAsync<Vehicle, VehicleType, Vehicle>(sqlQuery,
                 (vehicle, vehicleType) =>
@@ -66,7 +66,7 @@ namespace WebAutopark.DataAccess.Database.Repositories
                 }, new { id }
            );
 
-           return queryResult.SingleOrDefault();
+            return queryResult.SingleOrDefault();
         }
 
         public Task Update(Vehicle entity)

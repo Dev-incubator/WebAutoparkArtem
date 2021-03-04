@@ -1,0 +1,84 @@
+﻿@model OrderViewModel
+
+@{
+    ViewData["Title"] = "View";
+}
+
+
+<div class="card">
+    <div class="card-header">
+        <h4 class="text-center">Order №@Model.OrderId</h4>
+    </div>
+    <div class="card-body">
+        <div class="form-group row">
+            <label class="col-form-label col-sm-3">Name:</label>
+            <input asp-for="Vehicle.ModelName" readonly="readonly" class="form-control col col-sm-8" />
+        </div>
+        <div class="form-group row">
+            <label class="col-form-label col-sm-3">Registration number:</label>
+            <input asp-for="Vehicle.RegistrationNumber" readonly="readonly" class="form-control col col-sm-8" />
+        </div>
+
+        <div class="form-group row">
+            <label class="col-form-label col-sm-3">Description:</label>
+            <textarea asp-for="Description" readonly="readonly" class="form-control col col-sm-8">
+            </textarea>
+        </div>
+
+        <table class="table table-striped table-borderless table-sm">
+            <thead class="thead-light">
+                <tr>
+                    <th>
+                        Id
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Amount
+                    </th>
+                    <th>
+                        Price
+                    </th>
+                    <th>
+                        Description
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.OrderDetails)
+                {
+                    <tr>
+                        <td>
+                            @item.OrderDetailId
+                        </td>
+                        <td>
+                            @item.Part.Name
+                        </td>
+                        <td>
+                            @item.PartAmount
+                        </td>
+                        <td>
+                            @item.Part.Price.ToString("C")
+                        </td>
+                        <td>
+                            @item.Part.Description
+                        </td>
+                        <td class="text-center">
+                            <a asp-action="Update" asp-controller="OrderDetail" asp-route-id="@item.OrderDetailId" class="btn btn-sm btn-warning">
+                                Update info
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="text-center my-2">
+            <a asp-action="Create" asp-controller="OrderDetail" asp-route-orderId="@Model.OrderId" class="btn btn-warning">Add part</a> |
+            <a asp-action="ViewList" class="btn btn-primary">Back to List</a>
+        </div>
+    </div>
+</div>
+
+

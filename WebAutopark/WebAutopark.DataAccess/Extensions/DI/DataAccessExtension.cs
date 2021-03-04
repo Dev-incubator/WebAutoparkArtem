@@ -19,6 +19,7 @@ namespace WebAutopark.DataAccess.Extensions.DI
             services.AddScoped<IRepository<Vehicle>, VehicleRepository>();
             services.AddScoped<IRepository<VehiclePart>, VehiclePartRepository>();
             services.AddScoped<IRepository<OrderDetail>, OrderDetailRepository>();
+            services.AddScoped<IRepository<Order>, OrderRepository>();
         }
     }
 }

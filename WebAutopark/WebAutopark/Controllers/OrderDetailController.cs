@@ -39,9 +39,9 @@ namespace WebAutopark.Controllers
 
             ViewBag.Parts = await GetSelectListWithVehicleParts();
 
-            var viewModel = new OrderDetailViewModel 
-            { 
-                OrderId = orderId 
+            var viewModel = new OrderDetailViewModel
+            {
+                OrderId = orderId
             };
 
             return View(viewModel);
@@ -54,7 +54,7 @@ namespace WebAutopark.Controllers
 
             await _orderDetailService.Create(viewModel);
 
-            return RedirectToAction("Home", "Index");
+            return RedirectToAction("View", "Order", new { id = viewModel.OrderId });
         }
 
         public async Task<IActionResult> Update(int id)
@@ -78,7 +78,7 @@ namespace WebAutopark.Controllers
         {
             await _orderDetailService.Update(viewModel);
 
-            return RedirectToAction("Order", new { id = viewModel.OrderId });
+            return RedirectToAction("View", "Order", new { id = viewModel.OrderId });
         }
 
         [HttpPost]
@@ -87,7 +87,7 @@ namespace WebAutopark.Controllers
         {
             await _orderDetailService.Delete(id);
 
-            return RedirectToAction("Order", new { id = orderId });
+            return RedirectToAction("View", "Order", new { id = orderId });
         }
     }
 }

@@ -54,7 +54,7 @@ namespace WebAutopark.Controllers
         {
             await _vehiclePartService.Create(viewModel);
 
-            return RedirectToAction("ViewList");
+            return RedirectToAction(nameof(ViewList));
         }
 
         public async Task<IActionResult> Update(int id)
@@ -75,7 +75,7 @@ namespace WebAutopark.Controllers
         {
             await _vehiclePartService.Update(viewModel);
 
-            return RedirectToAction("ViewList");
+            return RedirectToAction(nameof(ViewList));
         }
 
         public async Task<IActionResult> DeleteConfirmation(int id)
@@ -96,7 +96,7 @@ namespace WebAutopark.Controllers
         {
             await _vehiclePartService.Delete(id);
 
-            return RedirectToAction("ViewList");
+            return RedirectToAction(nameof(ViewList));
         }
     }
 }
