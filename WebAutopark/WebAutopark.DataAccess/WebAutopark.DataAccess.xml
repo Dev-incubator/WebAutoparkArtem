@@ -1,0 +1,290 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WebAutopark.DataAccess</name>
+    </assembly>
+    <members>
+        <member name="T:WebAutopark.DataAccess.Database.Creator.DbCreator">
+            <summary>
+            Class, that uses sql scripts to create DB 
+            </summary>
+        </member>
+        <member name="M:WebAutopark.DataAccess.Database.Creator.DbCreator.EnsureCreated(System.String,System.String)">
+            <summary>
+            Method that ensure creation of database
+            </summary>
+            <param name="connectionString"></param>
+            <param name="sqlPath"></param>
+        </member>
+        <member name="T:WebAutopark.DataAccess.Database.Repositories.Base.DbConnectionBuilder">
+            <summary>
+            Parent class with 
+            </summary>
+        </member>
+        <member name="M:WebAutopark.DataAccess.Database.Repositories.Base.DbConnectionBuilder.#ctor(System.String)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="connectionString"></param>
+        </member>
+        <member name="M:WebAutopark.DataAccess.Database.Repositories.Base.DbConnectionBuilder.GetConnection">
+            <summary>
+            Create sql connection instance
+            </summary>
+            <returns>New sql connection</returns>
+        </member>
+        <member name="T:WebAutopark.DataAccess.Database.Repositories.Base.IDbConnectionBuilder">
+            <summary>
+            Interface for providing DB connection
+            </summary>
+        </member>
+        <member name="M:WebAutopark.DataAccess.Database.Repositories.Base.IDbConnectionBuilder.GetConnection">
+            <summary>
+            Create a new DB connection
+            </summary>
+            <returns>DbConnection instance</returns>
+        </member>
+        <member name="T:WebAutopark.DataAccess.Database.Repositories.Base.IRepository`1">
+            <summary>
+            Interface with base CRUD operations
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:WebAutopark.DataAccess.Database.Repositories.Base.IRepository`1.GetAll">
+            <summary>
+            Get all entities from database
+            </summary>
+            <returns>List of all entities</returns>
+        </member>
+        <member name="M:WebAutopark.DataAccess.Database.Repositories.Base.IRepository`1.Create(`0)">
+            <summary>
+            Create new entity in database 
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:WebAutopark.DataAccess.Database.Repositories.Base.IRepository`1.Update(`0)">
+            <summary>
+            Update entity in database
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:WebAutopark.DataAccess.Database.Repositories.Base.IRepository`1.Delete(System.Int32)">
+            <summary>
+            Delete entity from database by id
+            </summary>
+            <param name="id"></param>
+            
+        </member>
+        <member name="M:WebAutopark.DataAccess.Database.Repositories.Base.IRepository`1.GetById(System.Int32)">
+            <summary>
+            Find entity by id
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="T:WebAutopark.DataAccess.Database.Repositories.Base.RepositoryConnection">
+            <summary>
+            Abstract class, that provides DbConnection
+            </summary>
+        </member>
+        <member name="T:WebAutopark.DataAccess.Database.Repositories.OrderDetailRepository">
+            <summary>
+            Repository to work with order details
+            </summary>
+        </member>
+        <member name="T:WebAutopark.DataAccess.Database.Repositories.OrderRepository">
+            <summary>
+            Repository to work with orders
+            </summary>
+        </member>
+        <member name="M:WebAutopark.DataAccess.Database.Repositories.OrderRepository.GetOrders(System.String,System.Object)">
+            <summary>
+            Load orders from db with included data
+            </summary>
+            <param name="sqlQuery"></param>
+            <param name="param"></param>
+            <returns>IEnumerable with all orders and included data</returns>
+        </member>
+        <member name="T:WebAutopark.DataAccess.Database.Repositories.VehiclePartRepository">
+            <summary>
+            Repository for vehicle parts
+            </summary>
+        </member>
+        <member name="T:WebAutopark.DataAccess.Database.Repositories.VehicleRepository">
+            <summary>
+            Repository for working with vehicles
+            </summary>
+        </member>
+        <member name="T:WebAutopark.DataAccess.Database.Repositories.VehicleTypeRepository">
+            <summary>
+            Repository for working with vehicle types
+            </summary>
+        </member>
+        <member name="T:WebAutopark.DataAccess.Entities.Base.Entity">
+            <summary>
+            Base class, that represents Entity
+            </summary>
+        </member>
+        <member name="P:WebAutopark.DataAccess.Entities.Base.Entity.Id">
+            <summary>
+            Identifier for entities
+            </summary>
+        </member>
+        <member name="T:WebAutopark.DataAccess.Entities.Order">
+            <summary>
+            Order entity
+            </summary>
+        </member>
+        <member name="P:WebAutopark.DataAccess.Entities.Order.VehicleId">
+            <summary>
+            Id of vehicle
+            </summary>
+        </member>
+        <member name="P:WebAutopark.DataAccess.Entities.Order.Vehicle">
+            <summary>
+            Instance of vehicle
+            </summary>
+        </member>
+        <member name="P:WebAutopark.DataAccess.Entities.Order.OrderDetails">
+            <summary>
+            List of order details (Part of Many-To-Many relationship)
+            </summary>
+        </member>
+        <member name="P:WebAutopark.DataAccess.Entities.Order.Description">
+            <summary>
+            Short description about order
+            </summary>
+        </member>
+        <member name="T:WebAutopark.DataAccess.Entities.OrderDetail">
+            <summary>
+            Class, that represent order detail
+            </summary>
+        </member>
+        <member name="P:WebAutopark.DataAccess.Entities.OrderDetail.OrderId">
+            <summary>
+            Id of order (part of Many-To-Many relationship)
+            </summary>
+        </member>
+        <member name="P:WebAutopark.DataAccess.Entities.OrderDetail.Part">
+            <summary>
+            Vehicle part instance
+            </summary>
+        </member>
+        <member name="P:WebAutopark.DataAccess.Entities.OrderDetail.PartId">
+            <summary>
+            Id of vehicle part
+            </summary>
+        </member>
+        <member name="P:WebAutopark.DataAccess.Entities.OrderDetail.PartAmount">
+            <summary>
+            Amount of ordered parts
+            </summary>
+        </member>
+        <member name="T:WebAutopark.DataAccess.Entities.Vehicle">
+            <summary>
+            Vehicle entity
+            </summary>
+        </member>
+        <member name="P:WebAutopark.DataAccess.Entities.Vehicle.VehicleType">
+            <summary>
+            Vehicle type instance
+            </summary>
+        </member>
+        <member name="P:WebAutopark.DataAccess.Entities.Vehicle.VehicleTypeId">
+            <summary>
+            Vehicle type id (part of One-To-Many relationship)
+            </summary>
+        </member>
+        <member name="P:WebAutopark.DataAccess.Entities.Vehicle.ModelName">
+            <summary>
+            Name of vehicle model
+            </summary>
+        </member>
+        <member name="P:WebAutopark.DataAccess.Entities.Vehicle.RegistrationNumber">
+            <summary>
+            Registration number of a vehicle
+            </summary>
+        </member>
+        <member name="P:WebAutopark.DataAccess.Entities.Vehicle.Weight">
+            <summary>
+            Vehicle weight in Kg
+            </summary>
+        </member>
+        <member name="P:WebAutopark.DataAccess.Entities.Vehicle.ManufactureYear">
+            <summary>
+            Year of production
+            </summary>
+        </member>
+        <member name="P:WebAutopark.DataAccess.Entities.Vehicle.Mileage">
+            <summary>
+            Vehicle mileage in Km
+            </summary>
+        </member>
+        <member name="P:WebAutopark.DataAccess.Entities.Vehicle.CarColor">
+            <summary>
+            Vehicle color
+            </summary>
+        </member>
+        <member name="P:WebAutopark.DataAccess.Entities.Vehicle.FuelTankAmount">
+            <summary>
+            Fuel tank amount
+            </summary>
+        </member>
+        <member name="P:WebAutopark.DataAccess.Entities.Vehicle.Consumption">
+            <summary>
+            Consumption of vehicle engine
+            </summary>
+        </member>
+        <member name="T:WebAutopark.DataAccess.Entities.VehiclePart">
+            <summary>
+            Vehicle part enitiy
+            </summary>
+        </member>
+        <member name="P:WebAutopark.DataAccess.Entities.VehiclePart.Name">
+            <summary>
+            Name of part
+            </summary>
+        </member>
+        <member name="P:WebAutopark.DataAccess.Entities.VehiclePart.Price">
+            <summary>
+            Price of part
+            </summary>
+        </member>
+        <member name="P:WebAutopark.DataAccess.Entities.VehiclePart.Amount">
+            <summary>
+            Amount of part in warehouse
+            </summary>
+        </member>
+        <member name="P:WebAutopark.DataAccess.Entities.VehiclePart.Description">
+            <summary>
+            Short description of part
+            </summary>
+        </member>
+        <member name="T:WebAutopark.DataAccess.Entities.VehicleType">
+            <summary>
+            Vehicle type entity
+            </summary>
+        </member>
+        <member name="P:WebAutopark.DataAccess.Entities.VehicleType.TypeName">
+            <summary>
+            Name of type
+            </summary>
+        </member>
+        <member name="P:WebAutopark.DataAccess.Entities.VehicleType.TaxCoeff">
+            <summary>
+            Tax coefficent 
+            </summary>
+        </member>
+        <member name="T:WebAutopark.DataAccess.Extensions.DI.DataAccessExtension">
+            <summary>
+            Extension class for DI
+            </summary>
+        </member>
+        <member name="M:WebAutopark.DataAccess.Extensions.DI.DataAccessExtension.AddDataAccess(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String)">
+            <summary>
+            Adding components to IServiceCollection
+            </summary>
+            <param name="services"></param>
+            <param name="connectionString"></param>
+        </member>
+    </members>
+</doc>
