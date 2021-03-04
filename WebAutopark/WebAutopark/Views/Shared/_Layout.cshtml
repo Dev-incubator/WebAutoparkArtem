@@ -11,6 +11,11 @@
 <body>
     <header class="container">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="navbar-brand">
+                <a asp-action="Index" asp-controller="Home" class="nav-link">
+                    <img alt="home" style="width: 40px; height:40px" src="~/img/homepage.png" />
+                </a>
+            </div>
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link navbar-light" asp-controller="Vehicle" asp-action="ViewList">
@@ -42,6 +47,5 @@
     <script src="~/js/libraries/jquery.min.js"></script>
     @await Html.PartialAsync("_ValidationScriptsPartial")
     <script src="~/js/libraries/bootstrap.min.js"></script>
-    <script src="~/js/main.js" type="module"></script>
 </body>
 </html>

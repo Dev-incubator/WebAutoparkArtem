@@ -17,6 +17,7 @@ namespace WebAutopark.BusinessLogic.ViewModels
         [DataType(DataType.Currency)]
         [Range(0, double.MaxValue)]
         public double Price { get; set; }
+        [MaxLength(150)]
         public string Description { get; set; }
     }
 }

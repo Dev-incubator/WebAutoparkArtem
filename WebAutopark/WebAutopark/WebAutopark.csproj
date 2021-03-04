@@ -5,7 +5,13 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="wwwroot\html\" />
+      <Compile Remove="wwwroot\html\**" />
+      <Content Remove="wwwroot\html\**" />
+      <EmbeddedResource Remove="wwwroot\html\**" />
+      <None Remove="wwwroot\html\**" />
+    </ItemGroup>
+
+    <ItemGroup>
       <Folder Include="wwwroot\img\favicons\" />
       <Folder Include="wwwroot\js\modules\" />
       <Folder Include="wwwroot\js\libraries\" />

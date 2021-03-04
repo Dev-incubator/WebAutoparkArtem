@@ -14,6 +14,7 @@ namespace WebAutopark.BusinessLogic.ViewModels
         public VehicleViewModel Vehicle { get; set; }
         public List<OrderDetailViewModel> OrderDetails { get; set; }
         public int VehicleId { get; set; }
+        [MaxLength(150)]
         public string Description { get; set; }
     }
 }

@@ -9,6 +9,11 @@
     </div>
     <div class="card-body">
         <div class="form-group row">
+            <label class="col-form-label col-sm-3">Order Id:</label>
+            <input asp-for="OrderId" readonly="readonly" class="form-control col col-sm-8" />
+        </div>
+
+        <div class="form-group row">
             <label class="col-form-label col-sm-3">Name:</label>
             <input asp-for="Vehicle.ModelName" readonly="readonly" class="form-control col col-sm-8" />
         </div>

@@ -71,7 +71,7 @@ namespace WebAutopark.DataAccess.Database.Repositories
         {
             const string sqlQuery =
                 "UPDATE OrderDetails SET " +
-                "PartId = @PartId " +
+                "PartId = @PartId, " +
                 "PartAmount = @PartAmount " +
                 "WHERE Id = @Id";
 
