@@ -9,6 +9,9 @@ using WebAutopark.DataAccess.Entities;
 
 namespace WebAutopark.DataAccess.Database.Repositories
 {
+    /// <summary>
+    /// Repository to work with orders
+    /// </summary>
     public class OrderRepository : RepositoryConnection, IRepository<Order>
     {
         public OrderRepository(IDbConnectionBuilder connectionBuilder) : base(connectionBuilder)
@@ -16,6 +19,12 @@ namespace WebAutopark.DataAccess.Database.Repositories
 
         }
 
+        /// <summary>
+        /// Load orders from db with included data
+        /// </summary>
+        /// <param name="sqlQuery"></param>
+        /// <param name="param"></param>
+        /// <returns>IEnumerable with all orders and included data</returns>
         private async Task<IEnumerable<Order>> GetOrders(string sqlQuery, object param = null)
         {
             var queryResult = await _connection.QueryAsync<Order, OrderDetail, VehiclePart, Vehicle, (Order order, OrderDetail orderDetail)>(sqlQuery,

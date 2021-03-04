@@ -79,7 +79,7 @@ namespace WebAutopark.Controllers
                 return NoContent();
             }
 
-            ViewBag.Vehicles = await GetSelectListWithVehicles();
+            ViewBag.Vehicles = await GetSelectListWithVehicles(updatedEntity.Vehicle);
 
             return View(updatedEntity);
         }

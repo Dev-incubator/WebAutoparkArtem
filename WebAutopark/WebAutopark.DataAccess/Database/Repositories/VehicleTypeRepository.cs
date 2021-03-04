@@ -9,6 +9,10 @@ using WebAutopark.DataAccess.Entities;
 
 namespace WebAutopark.DataAccess.Database.Repositories
 {
+
+    /// <summary>
+    /// Repository for working with vehicle types
+    /// </summary>
     public class VehicleTypeRepository : RepositoryConnection, IRepository<VehicleType>
     {
         public VehicleTypeRepository(IDbConnectionBuilder dbConnectionBuilder) : base(dbConnectionBuilder)

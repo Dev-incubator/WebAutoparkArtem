@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace WebAutopark.DataAccess.Database.Repositories.Base
 {
+    /// <summary>
+    /// Abstract class, that provides DbConnection
+    /// </summary>
     public abstract class RepositoryConnection : IDisposable, IAsyncDisposable
     {
         protected readonly DbConnection _connection;

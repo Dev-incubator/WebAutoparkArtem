@@ -9,6 +9,9 @@ using WebAutopark.DataAccess.Entities;
 
 namespace WebAutopark.DataAccess.Database.Repositories
 {
+    /// <summary>
+    /// Repository to work with order details
+    /// </summary>
     public class OrderDetailRepository : RepositoryConnection, IRepository<OrderDetail>
     {
         public OrderDetailRepository(IDbConnectionBuilder dbConnectionBuilder) : base(dbConnectionBuilder)

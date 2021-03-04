@@ -10,8 +10,16 @@ using WebAutopark.DataAccess.Entities;
 
 namespace WebAutopark.DataAccess.Extensions.DI
 {
+    /// <summary>
+    /// Extension class for DI
+    /// </summary>
     public static class DataAccessExtension
     {
+        /// <summary>
+        /// Adding components to IServiceCollection
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="connectionString"></param>
         public static void AddDataAccess(this IServiceCollection services, string connectionString)
         {
             services.AddScoped<IDbConnectionBuilder, DbConnectionBuilder>(provider => new DbConnectionBuilder(connectionString));
