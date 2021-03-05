@@ -16,11 +16,7 @@ namespace WebAutopark.Controllers
         private readonly IBusinessService<VehiclePartViewModel> _vehiclePartService;
         private readonly IBusinessService<OrderDetailViewModel> _orderDetailService;
 
-        public OrderDetailController
-            (
-            IBusinessService<VehiclePartViewModel> vehiclePartService,
-            IBusinessService<OrderDetailViewModel> orderDetailService
-            )
+        public OrderDetailController(IBusinessService<VehiclePartViewModel> vehiclePartService, IBusinessService<OrderDetailViewModel> orderDetailService)
         {
             _vehiclePartService = vehiclePartService;
             _orderDetailService = orderDetailService;

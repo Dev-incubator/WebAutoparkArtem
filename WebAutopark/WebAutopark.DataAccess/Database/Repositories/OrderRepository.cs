@@ -46,8 +46,8 @@ namespace WebAutopark.DataAccess.Database.Repositories
 
                 selectResult.OrderDetails =
                 (queryResult.Select(tuple => tuple.orderDetail)
-                .Where(orderDetail => orderDetail is not null))
-                .ToList();
+                            .Where(orderDetail => orderDetail is not null))
+                            .ToList();
 
                 return selectResult;
             });
