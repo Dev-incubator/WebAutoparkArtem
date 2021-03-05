@@ -10,9 +10,17 @@ using System.Text;
 
 namespace WebAutopark.DataAccess.Database.Creator
 {
+    /// <summary>
+    /// Class, that uses sql scripts to create DB 
+    /// </summary>
     public static class DbCreator
     {
         private const string SqlExtension = ".sql";
+        /// <summary>
+        /// Method that ensure creation of database
+        /// </summary>
+        /// <param name="connectionString"></param>
+        /// <param name="sqlPath"></param>
         public static void EnsureCreated(string connectionString, string sqlPath)
         {
             var name = new SqlConnectionStringBuilder(connectionString).InitialCatalog;

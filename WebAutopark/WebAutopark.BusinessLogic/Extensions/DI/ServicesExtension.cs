@@ -18,6 +18,7 @@ namespace WebAutopark.BusinessLogic.Extensions.DI
             services.AddScoped<IVehicleService, VehicleService>();
             services.AddScoped<IBusinessService<VehiclePartViewModel>, VehiclePartService>();
             services.AddScoped<IBusinessService<OrderDetailViewModel>, OrderDetailService>();
+            services.AddScoped<IBusinessService<OrderViewModel>, OrderService>();
         }
     }
 }

@@ -223,11 +223,11 @@ REFERENCES [dbo].[Orders] ([Id]) ON DELETE CASCADE
 GO
 
 ALTER TABLE [dbo].[OrderDetails]  WITH CHECK ADD FOREIGN KEY([PartId])
-REFERENCES [dbo].[VehicleParts] ([Id]) 
+REFERENCES [dbo].[VehicleParts] ([Id]) ON DELETE CASCADE
 GO
 
 ALTER TABLE [dbo].[Orders]  WITH CHECK ADD FOREIGN KEY([VehicleId])
-REFERENCES [dbo].[Vehicles] ([Id])
+REFERENCES [dbo].[Vehicles] ([Id]) ON DELETE CASCADE
 GO
 
 ALTER TABLE [dbo].[Vehicles]  WITH CHECK ADD FOREIGN KEY([VehicleTypeId])

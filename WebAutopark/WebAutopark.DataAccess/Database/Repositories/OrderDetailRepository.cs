@@ -9,6 +9,9 @@ using WebAutopark.DataAccess.Entities;
 
 namespace WebAutopark.DataAccess.Database.Repositories
 {
+    /// <summary>
+    /// Repository to work with order details
+    /// </summary>
     public class OrderDetailRepository : RepositoryConnection, IRepository<OrderDetail>
     {
         public OrderDetailRepository(IDbConnectionBuilder dbConnectionBuilder) : base(dbConnectionBuilder)
@@ -38,8 +41,8 @@ namespace WebAutopark.DataAccess.Database.Repositories
         public Task<IEnumerable<OrderDetail>> GetAll()
         {
             const string sqlQuery =
-                "SELECT od.*, vd.* FROM OrderDetails od " +
-                "LEFT JOIN VehicleDetails vd on od.PartId = vd.Id ";
+                "SELECT od.*, vp.* FROM OrderDetails od " +
+                "LEFT JOIN VehicleParts vp on od.PartId = vp.Id ";
 
             return _connection.QueryAsync<OrderDetail, VehiclePart, OrderDetail>(sqlQuery, (orderDetail, part) =>
             {
@@ -51,9 +54,9 @@ namespace WebAutopark.DataAccess.Database.Repositories
         public async Task<OrderDetail> GetById(int id)
         {
             const string sqlQuery =
-                "SELECT od.*, vd.* FROM OrderDetails od " +
-                "LEFT JOIN VehicleDetails vd on od.PartId = vd.Id " +
-                "WHERE Id = @id";
+                "SELECT od.*, vp.* FROM OrderDetails od " +
+                "LEFT JOIN VehicleParts vp on od.PartId = vp.Id " +
+                "WHERE od.Id = @id";
 
             var queryResult = await _connection.QueryAsync<OrderDetail, VehiclePart, OrderDetail>(sqlQuery, (orderDetail, part) =>
             {
@@ -68,7 +71,7 @@ namespace WebAutopark.DataAccess.Database.Repositories
         {
             const string sqlQuery =
                 "UPDATE OrderDetails SET " +
-                "PartId = @PartId " +
+                "PartId = @PartId, " +
                 "PartAmount = @PartAmount " +
                 "WHERE Id = @Id";
 

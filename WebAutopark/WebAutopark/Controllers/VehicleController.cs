@@ -14,9 +14,7 @@ namespace WebAutopark.Controllers
         private readonly IVehicleService _vehicleService;
         private readonly IBusinessService<VehicleTypeViewModel> _vehicleTypeService;
 
-        public VehicleController(
-            IVehicleService vehicleService,
-            IBusinessService<VehicleTypeViewModel> vehicleTypeService)
+        public VehicleController(IVehicleService vehicleService, IBusinessService<VehicleTypeViewModel> vehicleTypeService)
         {
             _vehicleService = vehicleService;
             _vehicleTypeService = vehicleTypeService;
@@ -56,7 +54,7 @@ namespace WebAutopark.Controllers
         {
             await _vehicleService.Update(viewModel);
 
-            return RedirectToAction("ViewList");
+            return RedirectToAction(nameof(ViewList));
         }
 
         [HttpGet]
@@ -75,7 +73,7 @@ namespace WebAutopark.Controllers
 
             await _vehicleService.Create(viewModel);
 
-            return RedirectToAction("ViewList");
+            return RedirectToAction(nameof(ViewList));
         }
 
         [HttpGet]
@@ -128,7 +126,7 @@ namespace WebAutopark.Controllers
         {
             await _vehicleService.Delete(id);
 
-            return RedirectToAction("ViewList");
+            return RedirectToAction(nameof(ViewList));
         }
     }
 }
