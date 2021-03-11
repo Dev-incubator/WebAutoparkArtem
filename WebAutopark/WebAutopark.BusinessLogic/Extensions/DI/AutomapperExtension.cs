@@ -17,34 +17,29 @@ namespace WebAutopark.BusinessLogic.Extensions.DI
                 cfg =>
                 {
                     cfg.CreateMap<VehicleType, VehicleTypeViewModel>()
-                    .ForMember(dest => dest.VehicleTypeId, act => act.MapFrom(src => src.Id));
+                    .ForMember(dest => dest.VehicleTypeId, act => act.MapFrom(src => src.Id))
+                    .ReverseMap();
 
-                    cfg.CreateMap<VehicleTypeViewModel, VehicleType>()
-                    .ForMember(dest => dest.Id, act => act.MapFrom(src => src.VehicleTypeId));
 
                     cfg.CreateMap<Vehicle, VehicleViewModel>()
-                    .ForMember(dest => dest.VehicleId, act => act.MapFrom(src => src.Id));
+                    .ForMember(dest => dest.VehicleId, act => act.MapFrom(src => src.Id))
+                    .ReverseMap();
 
-                    cfg.CreateMap<VehicleViewModel, Vehicle>()
-                    .ForMember(dest => dest.Id, act => act.MapFrom(src => src.VehicleId));
 
                     cfg.CreateMap<VehiclePart, VehiclePartViewModel>()
-                    .ForMember(dest => dest.VehiclePartId, act => act.MapFrom(src => src.Id));
+                    .ForMember(dest => dest.VehiclePartId, act => act.MapFrom(src => src.Id))
+                    .ReverseMap();
 
-                    cfg.CreateMap<VehiclePartViewModel, VehiclePart>()
-                    .ForMember(dest => dest.Id, act => act.MapFrom(src => src.VehiclePartId));
 
                     cfg.CreateMap<OrderDetail, OrderDetailViewModel>()
-                    .ForMember(dest => dest.OrderDetailId, act => act.MapFrom(src => src.Id));
+                    .ForMember(dest => dest.OrderDetailId, act => act.MapFrom(src => src.Id))
+                    .ReverseMap();
 
-                    cfg.CreateMap<OrderDetailViewModel, OrderDetail>()
-                    .ForMember(dest => dest.Id, act => act.MapFrom(src => src.OrderDetailId));
 
                     cfg.CreateMap<Order, OrderViewModel>()
-                    .ForMember(dest => dest.OrderId, act => act.MapFrom(src => src.Id));
+                    .ForMember(dest => dest.OrderId, act => act.MapFrom(src => src.Id))
+                    .ReverseMap();
 
-                    cfg.CreateMap<OrderViewModel, Order>()
-                    .ForMember(dest => dest.Id, act => act.MapFrom(src => src.OrderId));
 
                 }
             );
