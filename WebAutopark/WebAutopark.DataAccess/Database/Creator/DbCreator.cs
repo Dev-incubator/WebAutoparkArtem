@@ -15,6 +15,7 @@ namespace WebAutopark.DataAccess.Database.Creator
     /// </summary>
     public static class DbCreator
     {
+        private const string DatabaseDefaultName = "DataBaseDefaultName";
         private const string SqlExtension = ".sql";
         /// <summary>
         /// Method that ensure creation of database
@@ -37,7 +38,7 @@ namespace WebAutopark.DataAccess.Database.Creator
 
                 if (File.Exists(sqlPath) && Path.GetExtension(sqlPath) == SqlExtension)
                 {
-                    var sqlScript = File.ReadAllText(sqlPath).Replace("DataBaseName", name);
+                    var sqlScript = File.ReadAllText(sqlPath).Replace(DatabaseDefaultName, name);
                     server.ConnectionContext.ExecuteNonQuery(sqlScript);
                 }
 
